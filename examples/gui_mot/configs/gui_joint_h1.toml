@@ -1,0 +1,37 @@
+[job]
+task = "vfm"
+experiment = "gui_joint_h1"
+project = "cosmos-gui"
+group = "androidcontrol"
+name = "mai_gui_joint_h1_smoke"
+wandb_mode = "disabled"
+
+[model]
+joint_attn_implementation = "two_way"
+precision = "bfloat16"
+max_num_tokens_after_packing = -1
+
+[model.parallelism]
+data_parallel_shard_degree = -1
+data_parallel_replicate_degree = 1
+context_parallel_shard_degree = 1
+
+[model.compile]
+enabled = false
+
+[model.ema]
+enabled = false
+
+[model.tokenizer]
+vae_path = "${oc.env:WAN_VAE_PATH}"
+
+[optimizer]
+lr = 0.00001
+
+[trainer]
+max_iter = 100
+logging_iter = 1
+
+[checkpoint]
+load_path = "${oc.env:BASE_CHECKPOINT_PATH}"
+save_iter = 100
