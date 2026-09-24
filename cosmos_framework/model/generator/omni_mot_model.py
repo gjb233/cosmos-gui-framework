@@ -1164,6 +1164,24 @@ class OmniMoTModel(ImaginaireModel):
         vae_pixel_shapes = get_vae_pixel_shapes(gen_data_clean.raw_state_vision)
         gen_data_clean, memory_info = self.memory_init_training(gen_data_clean, data_batch, input_text_indexes)
 
+        if getattr(self, "mot_joint", False):
+            # Training no longer needs raw pixels after VAE encoding and memory initialization.
+            # Drop every owning reference before the denoiser forward so large or fragmented
+            # VAE allocations cannot remain live alongside the MoT activation peak.
+            gen_data_clean.raw_state_vision = None
+            if self.input_video_key in data_batch:
+                data_batch[self.input_video_key] = []
+            if self.input_image_key in data_batch:
+                data_batch[self.input_image_key] = []
+            if self.tokenizer_vision_gen is not None:
+                clear_encoder_cache = getattr(self.tokenizer_vision_gen, "clear_encoder_cache", None)
+                if clear_encoder_cache is not None:
+                    clear_encoder_cache()
+            if torch.cuda.is_available():
+                # The VAE and denoiser have very different allocation shapes. Returning free
+                # VAE blocks here avoids carrying unusable fragments into the denoiser peak.
+                torch.cuda.empty_cache()
+
         # image_size[i] may be (1, 4) from IterativeJointDataLoader or (4,) from custom_collate_fn.
         if "image_size" in data_batch:
             data_resolutions: list[str] | str | None = []

@@ -955,14 +955,27 @@ class PackedAttentionMoT(nn.Module):
         # attends to every cached key without any mask.
         is_causal = T > 1 and k_full.shape[1] == T
 
-        out = imaginaire_attention(
-            query=q,  # [B,T,num_heads,head_dim]
-            key=k_full,  # [B,T_total,num_kv_heads,head_dim]
-            value=v_full,  # [B,T_total,num_kv_heads,head_dim]
-            is_causal=is_causal,
-            causal_type=CausalType.DontCare if is_causal else None,
-            scale=self.scaling,
-        )  # [B,T,num_heads,head_dim] (return_lse=False -> single Tensor)
+        # Use native attention when available, with a differentiable SDPA fallback.
+        try:
+            out = imaginaire_attention(
+                query=q,
+                key=k_full,
+                value=v_full,
+                is_causal=is_causal,
+                causal_type=CausalType.DontCare if is_causal else None,
+                scale=self.scaling,
+            )
+        except ValueError as error:
+            if "Could not find a compatible Attention backend" not in str(error):
+                raise
+            out = torch.nn.functional.scaled_dot_product_attention(
+                q.transpose(1, 2),
+                k_full.transpose(1, 2),
+                v_full.transpose(1, 2),
+                is_causal=is_causal,
+                scale=self.scaling,
+                enable_gqa=H != H_kv,
+            ).transpose(1, 2)
 
         return self.o_proj(out.reshape(B, T, H * D))  # type: ignore[union-attr]  # [B,T,hidden_size]
 
@@ -1134,6 +1147,8 @@ def _impl_forward(
     # for each pathway will be populated with the load balancing loss metadata for each layer.
     lbl_metadata_all: dict[str, list[LBLMetadata]] = dict(und=[], gen=[])
 
+    # cosmos-gui multimodal bridge v1
+    gui_visual = pack.pop('_gui_visual', None)
     hidden_states = pack
 
     # --- MemoryState: per-step init (outside compile) ---
@@ -1155,6 +1170,10 @@ def _impl_forward(
             memory_value=memory_value,
             gen_only=memory_gen_only,
         )
+
+        if gui_visual is not None:
+            from cosmos_framework.gui_mot.multimodal import add_deepstack
+            add_deepstack(hidden_states, gui_visual, i)
 
         # MemoryState: store K/V produced by this layer (outside compile)
         if kv_to_store is not None and memory is not None:
@@ -1892,7 +1911,11 @@ def _impl_reasoner_forward(
 
     # The multimodal rotary embedding accepts ``[B, T]`` and returns
     # cos/sin in ``[B, T, head_dim]`` (mrope axes are collapsed inside).
-    cos, sin = self.rotary_emb(h, position_ids=position_ids)
+    # RoPE phase must be formed in FP32.  The AR caller uses BF16 autocast
+    # for projections, which otherwise rounds the frequency-position matmul
+    # before sin/cos and corrupts the prefill keys at long image positions.
+    with torch.autocast(device_type=device.type, enabled=False):
+        cos, sin = self.rotary_emb(h, position_ids=position_ids)
 
     # Contract: when ``deepstack_visual_embeds`` is provided, ``visual_pos_masks``
     # must be non-None and every tensor must already match ``h``'s device + dtype.
@@ -2434,7 +2457,11 @@ class Qwen3VLTextForCausalLM(Qwen3VLPreTrainedModel):
         # the JSON's vision sub-section, so this is just a gate + plug.
         vision_config = config.vision_config
         if vision_config is not None:
-            self.visual = Qwen3VLVisionModel._from_config(vision_config)
+            # Match GUI-Libra/Transformers inference exactly.  Leaving this unset
+            # defaults the standalone vision config to eager attention, while the
+            # source GUI-Libra model is loaded with attn_implementation="sdpa".
+            vision_config._attn_implementation = "sdpa"
+            self.visual = Qwen3VLVisionModel._from_config(vision_config, attn_implementation="sdpa")
 
         # Initialize weights and apply final processing
         self.post_init()

@@ -710,6 +710,10 @@ class Cosmos3VFMNetwork(PreTrainedModel):
         Returns:
             tuple of (packed_sequence, target_dtype) where packed_sequence has text embeddings filled in.
         """
+        # cosmos-gui multimodal bridge v1
+        if hasattr(packed_seq, 'gui_multimodal_inputs'):
+            from cosmos_framework.gui_mot.multimodal import encode_prefix
+            return encode_prefix(self, packed_seq)
         packed_text_embedding = self.language_model.model.embed_tokens(packed_seq.text_ids)  # [N_text,hidden_size]
         packed_sequence = packed_text_embedding.new_zeros(
             size=(packed_seq.sequence_length, self.hidden_size)
@@ -1317,6 +1321,10 @@ class Cosmos3VFMNetwork(PreTrainedModel):
         # Note: During inference with @torch.no_grad(), model may be in training mode
         # This is intentional for proper batch norm / dropout behavior
         # assert self.training, "Cosmos3VFMNetwork only supports training mode"
+        # cosmos-gui hybrid AR generation v1
+        if hasattr(packed_seq, 'gui_ar_decode_request'):
+            from cosmos_framework.gui_mot.multimodal import hybrid_ar_generate
+            return hybrid_ar_generate(self, packed_seq.gui_ar_decode_request)
 
         packed_sequence, target_dtype = self._encode_text(packed_seq)  # packed_sequence: [N_total,hidden_size]
 
@@ -1483,6 +1491,8 @@ class Cosmos3VFMNetwork(PreTrainedModel):
             parallel_dims=sequence_shard_parallel_dims,
         )
 
+        from cosmos_framework.gui_mot.multimodal import attach_deepstack
+        attach_deepstack(input_pack, packed_seq)
         packed_outputs, lbl_metadata = self.language_model(
             input_pack,
             attention_mask=attention_meta,
@@ -1522,6 +1532,10 @@ class Cosmos3VFMNetwork(PreTrainedModel):
             )  # [N_ce_tokens,vocab_size]
             output_dict["ce_preds"] = packed_ce_preds
 
+        # cosmos-gui hybrid AR bridge v1
+        if hasattr(packed_seq, 'gui_action_target_ids'):
+            from cosmos_framework.gui_mot.multimodal import hybrid_ar_forward
+            hybrid_ar_forward(self, packed_seq, last_hidden_state, output_dict)
         return output_dict
 
 
