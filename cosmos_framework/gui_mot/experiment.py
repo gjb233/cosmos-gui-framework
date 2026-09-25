@@ -111,30 +111,27 @@ def register():
     mot.model.config.lora_enabled = True
     mot.model.config.lora_rank = 16
     mot.model.config.lora_alpha = 32
-    # Declare keys so structured Hydra accepts TOML learning-rate overrides.
-    mot.optimizer.lr_multipliers = {
-        "action2llm": 1.0,
-        "llm2action": 1.0,
-        "action_modality_embed": 1.0,
-    }
+    mot.optimizer.lr_multipliers = {}
     mot.checkpoint.keys_to_skip_loading.append("lora_")
     mot.model.mot_joint = True
     mot.model.hybrid_ar = False
-    mot.model.hybrid_kd_weight = 0.2
+    mot.model.video_only = True
+    mot.model.config.action_gen = False
+    mot.model.hybrid_kd_weight = float(os.environ.get("GUI_HYBRID_KD_WEIGHT", "0.2"))
     mot.model.config.lora_target_modules = (
         "q_proj,k_proj,v_proj,o_proj,q_proj_moe_gen,k_proj_moe_gen,v_proj_moe_gen,o_proj_moe_gen"
     )
     mot.dataloader_train.dataloader.datasets["gui"]["dataset"].native_ar_text = True
+    mot.dataloader_train.dataloader.datasets["gui"]["dataset"].video_only = True
+    mot.dataloader_train.dataloader.datasets["gui"]["dataset"].plan_cache = None
+    mot.dataloader_train.dataloader.datasets["gui"]["dataset"].normalize_plan = False
     mot.optimizer.keys_to_select = [
         "lora_",
         "time_embedder",
         "vae2llm",
         "llm2vae",
-        "action2llm",
-        "llm2action",
-        "action_modality_embed",
         "gui_joint_ar_bridge",
-        "gui_plan_future_conditioner",
+        "gui_future_conditioner",
     ]
     if os.environ.get("MOT_CHECKPOINT_PATH"):
         # Base Cosmos checkpoints have no LoRA or semantic-plan head tensors,

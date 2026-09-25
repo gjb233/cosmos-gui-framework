@@ -168,6 +168,20 @@ class PredictedPlanFutureConditioner(nn.Module):
         )
 
 
+class PredictedFutureConditioner(nn.Module):
+    """Map only the predicted future latent into AR cross-attention tokens."""
+
+    def __init__(self, vision_channels, hidden_size):
+        super().__init__()
+        self.future = nn.Linear(vision_channels, hidden_size, bias=False)
+
+    def forward(self, future_x0):
+        if future_x0.ndim != 5 or future_x0.shape[2] < 2:
+            raise ValueError("Expected future latents [B,C,T,H,W] with T >= 2")
+        future_tokens = future_x0[:, :, 1:].float().mean(dim=(-1, -2)).transpose(1, 2)
+        return self.future(future_tokens)
+
+
 def tokenize_action_targets(tokenizer, texts):
     """Tokenize only assistant action text; prompt tokens never enter action CE."""
     result = []

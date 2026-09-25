@@ -228,14 +228,16 @@ def hybrid_ar_forward(network, packed_seq, last_hidden_state, output_dict):
     start = prompt.shape[1] - 1
     action_hidden = base[:, start : start + labels.numel()]
     mot_joint = bool(getattr(packed_seq, "gui_mot_joint", False))
-    if not hasattr(packed_seq, "gui_sigmas_action"):
-        raise ValueError("Hybrid AR path is missing diffusion sigma metadata")
-    noisy_plan = packed_seq.action.tokens[0]
-    predicted_plan_velocity = output_dict["preds_action"][0]
-    plan_sigma = packed_seq.gui_sigmas_action[0]
-    while plan_sigma.ndim < noisy_plan.ndim:
-        plan_sigma = plan_sigma.unsqueeze(-1)
-    plan_x0 = noisy_plan.float() - plan_sigma.float() * predicted_plan_velocity.float()
+    video_only = bool(getattr(packed_seq, "gui_video_only", False))
+    if not video_only:
+        if not hasattr(packed_seq, "gui_sigmas_action"):
+            raise ValueError("Hybrid AR path is missing diffusion sigma metadata")
+        noisy_plan = packed_seq.action.tokens[0]
+        predicted_plan_velocity = output_dict["preds_action"][0]
+        plan_sigma = packed_seq.gui_sigmas_action[0]
+        while plan_sigma.ndim < noisy_plan.ndim:
+            plan_sigma = plan_sigma.unsqueeze(-1)
+        plan_x0 = noisy_plan.float() - plan_sigma.float() * predicted_plan_velocity.float()
 
     noisy_future = packed_seq.vision.tokens[0]
     predicted_future_velocity = output_dict["preds_vision"][0]
@@ -255,7 +257,11 @@ def hybrid_ar_forward(network, packed_seq, last_hidden_state, output_dict):
         future_x0 = future_x0.detach()
     bridge_scale = 1.0 if mot_joint else stage.bridge_scale
     with torch.autocast(device_type="cuda", dtype=compute_dtype):
-        joint = network.gui_plan_future_conditioner(plan_x0.unsqueeze(0), future_x0.unsqueeze(0))
+        joint = (
+            network.gui_future_conditioner(future_x0.unsqueeze(0))
+            if video_only
+            else network.gui_plan_future_conditioner(plan_x0.unsqueeze(0), future_x0.unsqueeze(0))
+        )
         adapted = network.gui_joint_ar_bridge(
             action_hidden,
             joint,
@@ -329,16 +335,22 @@ def hybrid_ar_generate(network, request):
     prompt = prompt.to(compute_dtype)
     deepstack = [item.to(compute_dtype) for item in deepstack]
     ar_only = bool(request.get("ar_only", False))
+    video_only = bool(request.get("video_only", False))
     context = None
     if not ar_only:
-        plan = request["plan"].to(device)
         future = request["future"].to(device)
         if future.ndim == 5 and future.shape[0] == 1:
             future = future[0]
-        if plan.ndim != 2 or future.ndim != 4:
-            raise ValueError("Sampled plan/future must be [T,D] and [C,T,H,W]")
+        if future.ndim != 4:
+            raise ValueError("Sampled future must be [C,T,H,W]")
         with torch.autocast(device_type="cuda", dtype=compute_dtype):
-            context = network.gui_plan_future_conditioner(plan.unsqueeze(0), future.unsqueeze(0))
+            if video_only:
+                context = network.gui_future_conditioner(future.unsqueeze(0))
+            else:
+                plan = request["plan"].to(device)
+                if plan.ndim != 2:
+                    raise ValueError("Sampled plan must be [T,D]")
+                context = network.gui_plan_future_conditioner(plan.unsqueeze(0), future.unsqueeze(0))
     cache = ReasonerKVCache.empty(len(network.language_model.model.layers))
     generated = []
     stop_token_ids = {int(request["eos_token_id"])}

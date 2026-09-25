@@ -6,6 +6,7 @@ from cosmos_framework.model.generator.omni_mot_model import OmniMoTModel
 
 from .backbone import backbone_path
 from .hybrid_action import (
+    PredictedFutureConditioner,
     PredictedPlanFutureConditioner,
     ZeroInitJointCrossAttention,
     autoregressive_ce,
@@ -39,6 +40,7 @@ class GuiJointModel(OmniMoTModel):
         hybrid_plan_x0_weight=0.1,
         hybrid_future_x0_weight=0.1,
         mot_joint=False,
+        video_only=False,
     ):
         if not 0 <= action_inactive_loss_weight <= 10:
             raise ValueError("Invalid inactive action loss weight")
@@ -46,8 +48,11 @@ class GuiJointModel(OmniMoTModel):
         # Plain attributes must therefore exist before delegating to it.
         object.__setattr__(self, "hybrid_ar", bool(hybrid_ar))
         object.__setattr__(self, "mot_joint", bool(mot_joint))
+        object.__setattr__(self, "video_only", bool(video_only))
         if mot_joint and hybrid_ar:
             raise ValueError("MoT joint and legacy AR-bridge modes are exclusive")
+        if video_only and (not mot_joint or config.action_gen):
+            raise ValueError("Video-only GUI MoT requires mot_joint=True and action_gen=False")
         object.__setattr__(self, "hybrid_align_steps", int(hybrid_align_steps))
         object.__setattr__(self, "hybrid_bridge_steps", int(hybrid_bridge_steps))
         object.__setattr__(self, "hybrid_ce_weight", float(hybrid_ce_weight))
@@ -64,9 +69,12 @@ class GuiJointModel(OmniMoTModel):
         if self.hybrid_ar or self.mot_joint:
             hidden = int(network.hidden_size)
             network.gui_joint_ar_bridge = ZeroInitJointCrossAttention(hidden)
-            network.gui_plan_future_conditioner = PredictedPlanFutureConditioner(
-                int(self.config.max_action_dim), int(self.config.state_ch), hidden
-            )
+            if self.video_only:
+                network.gui_future_conditioner = PredictedFutureConditioner(int(self.config.state_ch), hidden)
+            else:
+                network.gui_plan_future_conditioner = PredictedPlanFutureConditioner(
+                    int(self.config.max_action_dim), int(self.config.state_ch), hidden
+                )
         return network
 
     def training_step(self, data_batch, iteration=0):
@@ -90,6 +98,7 @@ class GuiJointModel(OmniMoTModel):
             "action_modality_embed",
             "gui_joint_ar_bridge",
             "gui_plan_future_conditioner",
+            "gui_future_conditioner",
         )
         for name, parameter in network.named_parameters():
             if not name.startswith("language_model.") and any(key in name for key in heads):
@@ -190,6 +199,8 @@ class GuiJointModel(OmniMoTModel):
             data_batch_packed.gui_action_target_ids = self._gui_action_target_ids
             if self.mot_joint:
                 data_batch_packed.gui_mot_joint = True
+                if self.video_only:
+                    data_batch_packed.gui_video_only = True
             else:
                 data_batch_packed.gui_hybrid_stage = hybrid_stage(
                     self._hybrid_iteration,
@@ -212,7 +223,8 @@ class GuiJointModel(OmniMoTModel):
             # those; clean U0/Z0 remain outside the network and cannot leak.
             # MoT uses the same x0 reconstruction to train the conditioner
             # that consumes final FM samples during inference.
-            packed_sequence.gui_sigmas_action = gen_data_noised.sigmas_action
+            if not self.video_only:
+                packed_sequence.gui_sigmas_action = gen_data_noised.sigmas_action
             packed_sequence.gui_sigmas_vision = gen_data_noised.sigmas_vision
 
     def _compute_losses(
@@ -229,42 +241,40 @@ class GuiJointModel(OmniMoTModel):
             raise ValueError("Initial GUI objective requires uniform weighting and shared modality sigma")
         if is_image_batch or self.config.sound_gen or self.config.lbl.coeff_gen or self.config.lbl.coeff_und:
             raise ValueError("GUI loss supports dense H1 video/action batches without auxiliary modalities")
-        action = data_batch_packed.action
-        if action is None or any(mask.any() for mask in action.condition_mask):
-            raise ValueError("GUI actions must all be denoising targets")
-        if action.action_valid_mask is not None:
-            raise ValueError("Do not expose GUI applicability via action_valid_mask")
-        # x0 = eps - (eps-x0): recover labels only HERE, after the joint forward.
-        clean = [
-            noise - target
-            for noise, target in zip(
-                gen_data_noised.epsilon_action,
-                gen_data_noised.vt_target_action,
-                strict=True,
-            )
-        ]
         group, _ = self._loss_averaging_group()
-        if self.hybrid_ar or self.mot_joint:
-            plan_per_sample = plan_flow_per_sample(out_net["preds_action"], gen_data_noised.vt_target_action)
-            action_loss = global_sample_mean(plan_per_sample, group=group)
-            groups = {}
-            inactive_loss = vision_loss = None
-        else:
-            action_loss, groups = action_flow_loss(
-                out_net["preds_action"],
-                gen_data_noised.vt_target_action,
-                clean,
-                group=group,
-            )
         vision_per_sample = future_flow_per_sample(out_net["preds_vision"], gen_data_noised.vt_target_vision)
         vision_loss = global_sample_mean(vision_per_sample, group=group)
-        inactive_loss = (
-            vision_loss.new_zeros(())
-            if (self.hybrid_ar or self.mot_joint)
-            else inactive_action_flow_loss(
-                out_net["preds_action"], gen_data_noised.vt_target_action, clean, group=group
-            )
-        )
+        action_loss = inactive_loss = vision_loss.new_zeros(())
+        groups = {}
+        clean = []
+        if self.video_only:
+            if data_batch_packed.action is not None or "preds_action" in out_net:
+                raise ValueError("Video-only GUI MoT must not pack or predict continuous actions")
+        else:
+            action = data_batch_packed.action
+            if action is None or any(mask.any() for mask in action.condition_mask):
+                raise ValueError("GUI actions must all be denoising targets")
+            if action.action_valid_mask is not None:
+                raise ValueError("Do not expose GUI applicability via action_valid_mask")
+            # x0 = eps - (eps-x0): recover labels only HERE, after the joint forward.
+            clean = [
+                noise - target
+                for noise, target in zip(
+                    gen_data_noised.epsilon_action,
+                    gen_data_noised.vt_target_action,
+                    strict=True,
+                )
+            ]
+            if self.hybrid_ar or self.mot_joint:
+                plan_per_sample = plan_flow_per_sample(out_net["preds_action"], gen_data_noised.vt_target_action)
+                action_loss = global_sample_mean(plan_per_sample, group=group)
+            else:
+                action_loss, groups = action_flow_loss(
+                    out_net["preds_action"], gen_data_noised.vt_target_action, clean, group=group
+                )
+                inactive_loss = inactive_action_flow_loss(
+                    out_net["preds_action"], gen_data_noised.vt_target_action, clean, group=group
+                )
         plan_x0_loss = vision_loss.new_zeros(())
         future_x0_loss = vision_loss.new_zeros(())
         if self.hybrid_ar or self.mot_joint:
@@ -276,15 +286,16 @@ class GuiJointModel(OmniMoTModel):
                     strict=True,
                 )
             ]
-            plan_x0_loss = global_sample_mean(
-                plan_x0_per_sample(
-                    gen_data_noised.xt_tokens_action,
-                    out_net["preds_action"],
-                    gen_data_noised.sigmas_action,
-                    clean,
-                ),
-                group=group,
-            )
+            if not self.video_only:
+                plan_x0_loss = global_sample_mean(
+                    plan_x0_per_sample(
+                        gen_data_noised.xt_tokens_action,
+                        out_net["preds_action"],
+                        gen_data_noised.sigmas_action,
+                        clean,
+                    ),
+                    group=group,
+                )
             future_x0_loss = global_sample_mean(
                 future_x0_per_sample(
                     gen_data_noised.xt_tokens_vision,
@@ -335,39 +346,45 @@ class GuiJointModel(OmniMoTModel):
                     ar_base_token_accuracy = (out_net["gui_ar_base_logits"].argmax(-1) == labels).float().mean()
                     ar_base_ce = autoregressive_ce(out_net["gui_ar_base_logits"], labels)
                     ar_sequence_exact = (out_net["gui_ar_logits"].argmax(-1) == labels).all().float()
-        with torch.no_grad():
-            recovered = [
-                xt.float() - sigma.float() * prediction.float()
-                for xt, sigma, prediction in zip(
-                    gen_data_noised.xt_tokens_action,
-                    gen_data_noised.sigmas_action,
-                    out_net["preds_action"],
-                    strict=True,
+        action_metrics = {}
+        if not self.video_only:
+            with torch.no_grad():
+                recovered = [
+                    xt.float() - sigma.float() * prediction.float()
+                    for xt, sigma, prediction in zip(
+                        gen_data_noised.xt_tokens_action,
+                        gen_data_noised.sigmas_action,
+                        out_net["preds_action"],
+                        strict=True,
+                    )
+                ]
+                type_accuracy = (
+                    vision_loss.new_zeros(())
+                    if (self.hybrid_ar or self.mot_joint)
+                    else global_sample_mean(
+                        torch.stack(
+                            [
+                                (prediction[:, :8].argmax(-1) == target[:, :8].argmax(-1)).float().mean()
+                                for prediction, target in zip(recovered, clean, strict=True)
+                            ]
+                        ),
+                        group=group,
+                    )
                 )
-            ]
-            type_accuracy = (
-                vision_loss.new_zeros(())
-                if (self.hybrid_ar or self.mot_joint)
-                else global_sample_mean(
-                    torch.stack(
-                        [
-                            (prediction[:, :8].argmax(-1) == target[:, :8].argmax(-1)).float().mean()
-                            for prediction, target in zip(recovered, clean, strict=True)
-                        ]
-                    ),
-                    group=group,
+                mean_sigma = global_sample_mean(
+                    torch.stack([sigma.float().mean() for sigma in gen_data_noised.sigmas_action]), group=group
                 )
-            )
-            mean_sigma = global_sample_mean(
-                torch.stack([sigma.float().mean() for sigma in gen_data_noised.sigmas_action]), group=group
-            )
-            _, x0_groups = action_flow_loss(recovered, clean, clean, group=group)
+                _, x0_groups = action_flow_loss(recovered, clean, clean, group=group)
+            action_metrics = {
+                "gui_action_inactive": inactive_loss,
+                "gui_action_denoised_type_accuracy": type_accuracy,
+                "gui_action_sigma": mean_sigma,
+                **{f"gui_action_x0_{name}_mse": value for name, value in x0_groups.items()},
+                "flow_matching_loss_action": action_loss,
+                "gui_plan_x0_huber": plan_x0_loss,
+                **{f"gui_action_{name}": loss for name, loss in groups.items()},
+            }
         return total, {
-            "gui_action_inactive": inactive_loss,
-            "gui_action_denoised_type_accuracy": type_accuracy,
-            "gui_action_sigma": mean_sigma,
-            **{f"gui_action_x0_{name}_mse": value for name, value in x0_groups.items()},
-            "flow_matching_loss_action": action_loss,
             "flow_matching_loss_vision": vision_loss,
             "flow_matching_loss_vision_per_instance": vision_per_sample.detach(),
             "gui_ar_ce": ar_loss,
@@ -378,7 +395,6 @@ class GuiJointModel(OmniMoTModel):
             "gui_ar_base_token_accuracy": ar_base_token_accuracy,
             "gui_ar_base_ce": ar_base_ce,
             "gui_ar_sequence_exact": ar_sequence_exact,
-            "gui_plan_x0_huber": plan_x0_loss,
             "gui_future_x0_huber": future_x0_loss,
-            **{f"gui_action_{name}": loss for name, loss in groups.items()},
+            **action_metrics,
         }

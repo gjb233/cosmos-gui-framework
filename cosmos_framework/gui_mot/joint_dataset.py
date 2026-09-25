@@ -78,6 +78,7 @@ def make_sample(
     max_action_dim=64,
     horizon=1,
     native_ar_text=False,
+    video_only=False,
 ):
     """Inference may supply ONLY current+instruction; omitted targets are zeros.
 
@@ -110,11 +111,13 @@ def make_sample(
     actions = [None] * horizon if action is None else ([action] if isinstance(action, dict) else list(action))
     if len(actions) != horizon:
         raise ValueError("Expected one action per horizon step")
+    if video_only and action_plan is not None:
+        raise ValueError("Video-only samples cannot include an action plan")
     if action_plan is not None:
         value = torch.as_tensor(action_plan, dtype=torch.float32)
         if value.shape != (horizon, max_action_dim) or not torch.isfinite(value).all():
             raise ValueError("Expected finite [horizon,max_action_dim] action plan")
-    else:
+    elif not video_only:
         value = torch.stack([torch.zeros(14) if item is None else encode_action(item) for item in actions])
     frames = [current]
     for target in futures:
@@ -139,12 +142,14 @@ def make_sample(
         "sequence_plan": SequencePlan(
             has_text=True,
             has_vision=True,
-            has_action=True,
+            has_action=not video_only,
             condition_frame_indexes_vision=[0],
             condition_frame_indexes_action=[],
             action_start_frame_offset=1,
         ),
     }
+    if video_only:
+        return sample
     return ActionProcessor(max_action_dim=max_action_dim).preprocess_action(sample, value, action_normalizer=None)
 
 
@@ -160,6 +165,7 @@ class JointPolicyDataset:
         plan_cache=None,
         native_ar_text=False,
         normalize_plan=False,
+        video_only=False,
     ):
         self.records = load_manifest(manifest)
         if instruction_level not in ("high", "low", "mixed"):
@@ -175,6 +181,9 @@ class JointPolicyDataset:
         self.horizon = horizon
         self.native_ar_text = bool(native_ar_text)
         self.normalize_plan = bool(normalize_plan)
+        self.video_only = bool(video_only)
+        if self.video_only and (plan_cache or self.normalize_plan):
+            raise ValueError("Video-only training must not load or normalize action plans")
         self.plan_cache = None
         self.plan_mean = None
         self.plan_std = None
@@ -222,12 +231,14 @@ class JointPolicyDataset:
             raise ValueError("Multi-step world-action training requires the episode goal")
         use_high = self.instruction_level == "high" or (self.instruction_level == "mixed" and index % 10 < 7)
         instruction = row.goal if use_high else row.instruction
-        key = f"{row.episode_id}:{row.step}:{self.horizon}"
-        action_plan = None if self.plan_cache is None else self.plan_cache.get(key)
-        if self.plan_cache is not None and action_plan is None:
-            raise ValueError(f"Action-plan cache is missing {key}")
-        if action_plan is not None and self.normalize_plan:
-            action_plan = (torch.as_tensor(action_plan, dtype=torch.float32) - self.plan_mean) / self.plan_std
+        action_plan = None
+        if self.plan_cache is not None:
+            key = f"{row.episode_id}:{row.step}:{self.horizon}"
+            action_plan = self.plan_cache.get(key)
+            if action_plan is None:
+                raise ValueError(f"Action-plan cache is missing {key}")
+            if self.normalize_plan:
+                action_plan = (torch.as_tensor(action_plan, dtype=torch.float32) - self.plan_mean) / self.plan_std
         current = read_screen(row.current_image)
         target_hw = tuple(current.shape[-2:])
         return make_sample(
@@ -240,6 +251,7 @@ class JointPolicyDataset:
             max_action_dim=self.max_action_dim,
             horizon=self.horizon,
             native_ar_text=self.native_ar_text,
+            video_only=self.video_only,
         )
 
 

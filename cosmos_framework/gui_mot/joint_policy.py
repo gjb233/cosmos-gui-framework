@@ -1,4 +1,4 @@
-"""Action-only output from native JOINT action/vision denoising."""
+"""GUI action output from a vision or joint continuous sampler."""
 
 import json
 import re
@@ -37,11 +37,13 @@ class JointPolicy:
         if type(seed) is not int or type(sampling_steps) is not int or sampling_steps < 1:
             raise ValueError("Expected integer seed and positive sampling_steps")
         current = read_screen(current_image) if not isinstance(current_image, torch.Tensor) else current_image
+        video_only = bool(getattr(self.model, "video_only", False))
         sample = make_sample(
             current,
             instruction,
             max_action_dim=self.model.config.max_action_dim,
             horizon=horizon,
+            video_only=video_only,
         )
         if exact_user_prompt:
             sample["ai_caption"] = instruction
@@ -57,7 +59,7 @@ class JointPolicy:
                 raise ValueError("prefix_image must be a uint8 CHW tensor")
             sample["gui_current_screens"] = [prefix_image.detach().cpu().clone()]
         batch = custom_collate_fn([sample])
-        if getattr(self.model, "hybrid_ar", False) or getattr(self.model, "mot_joint", False):
+        if not video_only and (getattr(self.model, "hybrid_ar", False) or getattr(self.model, "mot_joint", False)):
             from cosmos_framework.data.generator.action.utils.action_processing import (
                 ActionProcessingRecord,
             )
@@ -80,19 +82,24 @@ class JointPolicy:
             use_batched_cfg=False,
             upsample_task=None,
         )
-        if len(result.get("action", [])) != 1 or len(result.get("vision", [])) != 1:
-            raise RuntimeError("Joint sampler must return one action and one latent video")
-        action_tensor = result["action"][0]
-        if action_tensor.ndim != 2 or action_tensor.shape[0] != horizon:
-            raise RuntimeError(f"Expected {horizon} GUI action tokens")
+        if len(result.get("vision", [])) != 1:
+            raise RuntimeError("GUI sampler must return one latent video")
+        action_tensor = None
+        if not video_only:
+            if len(result.get("action", [])) != 1:
+                raise RuntimeError("Joint sampler must return one continuous action")
+            action_tensor = result["action"][0]
+            if action_tensor.ndim != 2 or action_tensor.shape[0] != horizon:
+                raise RuntimeError(f"Expected {horizon} GUI action tokens")
+        elif "action" in result:
+            raise RuntimeError("Video-only sampler unexpectedly returned continuous actions")
         if getattr(self.model, "hybrid_ar", False) or getattr(self.model, "mot_joint", False):
             tokenizer = self.model._gui_processor().tokenizer
             request = {
                 "prompt": self.model._gui_prefix[0],
-                # Training reconstructs x0 from the denoiser and conditions
-                # AR logits through this same bridge. Inference must therefore
-                # consume the final FM plan/future samples as well.
+                # Match training's bridge using the final sampled future latent.
                 "ar_only": False,
+                "video_only": video_only,
                 "eos_token_id": tokenizer.eos_token_id,
                 "stop_token_ids": [tokenizer.convert_tokens_to_ids("<|im_end|>")],
                 "stop_sequences": [
@@ -101,7 +108,8 @@ class JointPolicy:
                 ],
                 "max_new_tokens": int(max_new_tokens),
             }
-            request["plan"] = action_tensor
+            if not video_only:
+                request["plan"] = action_tensor
             request["future"] = result["vision"][0]
             native_prefix_file = __import__("os").environ.get("GUI_NATIVE_PREFIX_FILE")
             if native_prefix_file:
@@ -131,7 +139,7 @@ class JointPolicy:
                 "first_max_logit_delta": generated["first_max_logit_delta"],
                 "complete": bool(generated.get("finished", False)),
             }
-            if return_action_values:
+            if return_action_values and not video_only:
                 output["plan_values"] = action_tensor.detach().float().cpu().tolist()
             if return_future_latents:
                 output["future_latents"] = result["vision"][0]
@@ -139,6 +147,8 @@ class JointPolicy:
                 latent = result["vision"][0]
                 output["future_video"] = self.model.decode(latent.unsqueeze(0) if latent.ndim == 4 else latent)
             return output
+        if action_tensor is None:
+            raise RuntimeError("Video-only GUI models require the autoregressive action head")
         decoded = [asdict(decode_action(item)) for item in action_tensor]
         output = decoded[0] if horizon == 1 else {"actions": decoded}
         if return_action_values:
