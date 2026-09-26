@@ -195,6 +195,52 @@ def parse_native_tool_calls(text):
             continue
     if actions:
         return actions
+    # The official GUI-Libra answer uses title-case action types and point_2d.
+    # Keep this separate from the legacy standalone action schema below.
+    for body in re.findall(r'\{[^{}]*"action_type"[^{}]*\}', text, re.S):
+        try:
+            item = json.loads(body)
+            kind = item["action_type"]
+            value = item.get("value")
+            point = item.get("point_2d")
+            if kind in ("Click", "LongPress"):
+                if not isinstance(point, list) or len(point) != 2:
+                    continue
+                x, y = (float(coord) for coord in point)
+                if not (0 <= x <= 999 and 0 <= y <= 999):
+                    continue
+                action = {"type": "click" if kind == "Click" else "long_press", "x": x / 999, "y": y / 999}
+            elif kind == "Write":
+                if not isinstance(value, str) or value == "None":
+                    continue
+                action = {"type": "input_text", "text": value}
+                if isinstance(point, list) and len(point) == 2:
+                    x, y = (float(coord) for coord in point)
+                    if 0 <= x <= 999 and 0 <= y <= 999:
+                        action.update(x=x / 999, y=y / 999)
+            elif kind == "Scroll":
+                if value not in ("up", "down", "left", "right"):
+                    continue
+                action = {"type": "scroll", "direction": value}
+            elif kind == "OpenApp":
+                if not isinstance(value, str) or not value or value == "None":
+                    continue
+                action = {"type": "open_app", "app_name": value}
+            elif kind == "NavigateBack":
+                action = {"type": "navigate_back"}
+            elif kind == "Home":
+                action = {"type": "navigate_home"}
+            elif kind == "Wait":
+                action = {"type": "wait"}
+            elif kind == "Terminate":
+                action = {"type": "terminate", "message": value if isinstance(value, str) else ""}
+            else:
+                continue
+            actions.append({"action": action, "valid": True, "payload_complete": True})
+        except (KeyError, TypeError, ValueError):
+            continue
+    if actions:
+        return actions
     # GUI-Libra may emit standalone JSON action objects or an actions array.
     # Score only completed objects when generation stops mid-trajectory.
     for body in re.findall(r'\{[^{}]*"action_type"[^{}]*\}', text, re.S):
