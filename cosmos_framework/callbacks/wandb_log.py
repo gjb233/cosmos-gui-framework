@@ -260,7 +260,7 @@ class WandbCallback(Callback):
         self.final_loss_log.loss += loss.detach().float()
         self.final_loss_log.iter_count += 1
 
-        gui_loss_keys = {"gui_ar_ce", "gui_future_x0_huber", "gui_ar_kd", "gui_ar_base_ce"}
+        gui_loss_keys = {"gui_ar_ce", "gui_ar_kd", "gui_ar_base_ce"}
         for key in output_batch.keys():
             # Include GUI MoT's named objectives, which do not have "loss" in their keys.
             # Per-instance tensors are excluded because W&B detail curves are scalar.

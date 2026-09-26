@@ -110,18 +110,6 @@ def plan_x0_per_sample(xt, velocity, sigma, targets):
     )
 
 
-def future_x0_per_sample(xt, velocity, sigma, targets):
-    recovered = recovered_x0_per_sample(xt, velocity, sigma)
-    values = []
-    for prediction, target in zip(recovered, targets, strict=True):
-        if target.ndim == 5 and target.shape[0] == 1:
-            target = target.squeeze(0)
-        if prediction.shape != target.shape or prediction.ndim != 4:
-            raise ValueError("Expected matching [C,T,H,W] future tensors")
-        values.append(torch.nn.functional.huber_loss(prediction[:, 1:], target.float()[:, 1:]))
-    return torch.stack(values)
-
-
 def inactive_action_flow_loss(predictions, targets, clean_actions, *, group=None):
     """Denoise unused semantic slots to zero without revealing applicability as input.
 

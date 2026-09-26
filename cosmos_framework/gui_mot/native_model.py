@@ -17,7 +17,6 @@ from .hybrid_action import (
 from .joint_loss import (
     action_flow_loss,
     future_flow_per_sample,
-    future_x0_per_sample,
     global_sample_mean,
     inactive_action_flow_loss,
     plan_flow_per_sample,
@@ -38,7 +37,6 @@ class GuiJointModel(OmniMoTModel):
         hybrid_kd_weight=0.5,
         hybrid_plan_fm_weight=0.5,
         hybrid_plan_x0_weight=0.1,
-        hybrid_future_x0_weight=0.1,
         mot_joint=False,
         video_only=False,
     ):
@@ -59,7 +57,6 @@ class GuiJointModel(OmniMoTModel):
         object.__setattr__(self, "hybrid_kd_weight", float(hybrid_kd_weight))
         object.__setattr__(self, "hybrid_plan_fm_weight", float(hybrid_plan_fm_weight))
         object.__setattr__(self, "hybrid_plan_x0_weight", float(hybrid_plan_x0_weight))
-        object.__setattr__(self, "hybrid_future_x0_weight", float(hybrid_future_x0_weight))
         object.__setattr__(self, "_hybrid_iteration", 0)
         super().__init__(config)
         self.action_inactive_loss_weight = float(action_inactive_loss_weight)
@@ -280,16 +277,7 @@ class GuiJointModel(OmniMoTModel):
                     out_net["preds_action"], gen_data_noised.vt_target_action, clean, group=group
                 )
         plan_x0_loss = vision_loss.new_zeros(())
-        future_x0_loss = vision_loss.new_zeros(())
         if self.hybrid_ar or self.mot_joint:
-            clean_vision = [
-                noise - target
-                for noise, target in zip(
-                    gen_data_noised.epsilon_vision,
-                    gen_data_noised.vt_target_vision,
-                    strict=True,
-                )
-            ]
             if not self.video_only:
                 plan_x0_loss = global_sample_mean(
                     plan_x0_per_sample(
@@ -300,20 +288,10 @@ class GuiJointModel(OmniMoTModel):
                     ),
                     group=group,
                 )
-            future_x0_loss = global_sample_mean(
-                future_x0_per_sample(
-                    gen_data_noised.xt_tokens_vision,
-                    out_net["preds_vision"],
-                    gen_data_noised.sigmas_vision,
-                    clean_vision,
-                ),
-                group=group,
-            )
             total = (
                 self.hybrid_plan_fm_weight * action_loss
                 + rf.loss_scale * vision_loss
                 + self.hybrid_plan_x0_weight * plan_x0_loss
-                + self.hybrid_future_x0_weight * future_x0_loss
             )
         else:
             total = (
@@ -404,6 +382,5 @@ class GuiJointModel(OmniMoTModel):
             "gui_ar_base_token_accuracy": ar_base_token_accuracy,
             "gui_ar_base_ce": ar_base_ce,
             "gui_ar_sequence_exact": ar_sequence_exact,
-            "gui_future_x0_huber": future_x0_loss,
             **action_metrics,
         }

@@ -31,7 +31,6 @@ def register():
     recipe.model.hybrid_kd_weight = float(os.environ.get("GUI_HYBRID_KD_WEIGHT", "0.5"))
     recipe.model.hybrid_plan_fm_weight = float(os.environ.get("GUI_HYBRID_PLAN_FM_WEIGHT", "0.5"))
     recipe.model.hybrid_plan_x0_weight = float(os.environ.get("GUI_HYBRID_PLAN_X0_WEIGHT", "0.1"))
-    recipe.model.hybrid_future_x0_weight = float(os.environ.get("GUI_HYBRID_FUTURE_X0_WEIGHT", "0.1"))
     cfg = recipe.model.config
     cfg.ema.enabled = False
     cfg.compile.enabled = False
