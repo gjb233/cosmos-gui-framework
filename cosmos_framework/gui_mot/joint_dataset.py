@@ -8,7 +8,8 @@ import torch
 from PIL import Image
 
 from .action_codec import encode_action
-from .hybrid_action import action_trajectory_text, libra_json_trajectory
+from .hybrid_action import action_trajectory_text
+from .official_format import SYSTEM_PROMPT, official_action_text, official_history_action, official_query
 from .transition import load_manifest
 
 
@@ -79,6 +80,7 @@ def make_sample(
     horizon=1,
     native_ar_text=False,
     video_only=False,
+    prefix_image=None,
 ):
     """Inference may supply ONLY current+instruction; omitted targets are zeros.
 
@@ -123,9 +125,23 @@ def make_sample(
     for target in futures:
         # Wan's causal VAE compresses every four RGB frames into one future latent.
         frames.extend([target] * 4)
+    if native_ar_text and horizon != 1:
+        raise ValueError("Official GUI-Libra action format currently supports horizon=1")
+    prompt_image = current if prefix_image is None else prefix_image
+    if native_ar_text and (prompt_image.ndim != 3 or prompt_image.shape[0] != 3 or prompt_image.dtype != torch.uint8):
+        raise ValueError("Official GUI-Libra prefix requires a uint8 CHW screenshot")
+    official_prompt = None
+    if native_ar_text:
+        official_prompt = official_query(
+            {
+                "step_instruction": instruction,
+                "previous_actions": [official_history_action(item) for item in (previous_actions or [])],
+            },
+            (prompt_image.shape[-1], prompt_image.shape[-2]),
+        )
     sample = {
         "video": torch.stack(frames, dim=1),
-        "ai_caption": policy_prompt(instruction, horizon, previous_actions),
+        "ai_caption": official_prompt if native_ar_text else policy_prompt(instruction, horizon, previous_actions),
         "image_size": torch.tensor([height, width, height, width]),
         "padding_mask": torch.zeros(1, height, width),
         "fps": torch.tensor(4.0),
@@ -134,8 +150,10 @@ def make_sample(
         "domain_id": torch.tensor(0),
         # The native FM baseline ignores this field. The hybrid recipe uses it
         # as the original GUI-Libra AR/CE target after joint denoising.
-        "gui_action_text": (libra_json_trajectory if native_ar_text else action_trajectory_text)(
-            [item for item in actions if item is not None]
+        "gui_action_text": (
+            official_action_text(actions[0], instruction)
+            if native_ar_text
+            else action_trajectory_text([item for item in actions if item is not None])
         )
         if all(item is not None for item in actions)
         else "",
@@ -148,6 +166,9 @@ def make_sample(
             action_start_frame_offset=1,
         ),
     }
+    if native_ar_text:
+        sample["gui_system_prompt"] = SYSTEM_PROMPT
+        sample["gui_current_screens"] = [prompt_image]
     if video_only:
         return sample
     return ActionProcessor(max_action_dim=max_action_dim).preprocess_action(sample, value, action_normalizer=None)
@@ -211,6 +232,9 @@ class JointPolicyDataset:
         self.windows = []
         for start in range(len(self.records) - horizon + 1):
             window = self.records[start : start + horizon]
+            if self.native_ar_text and any(item.action["type"] == "navigate_home" for item in window):
+                # NavigateHome is absent from the fixed official benchmark action vocabulary.
+                continue
             if all(
                 right.episode_id == left.episode_id
                 and right.step == left.step + 1
@@ -241,6 +265,12 @@ class JointPolicyDataset:
                 action_plan = (torch.as_tensor(action_plan, dtype=torch.float32) - self.plan_mean) / self.plan_std
         current = read_screen(row.current_image)
         target_hw = tuple(current.shape[-2:])
+        prefix_image = None
+        if self.native_ar_text:
+            with Image.open(row.current_image) as source:
+                prefix_image = (
+                    torch.from_numpy(np.array(source.convert("RGB"), copy=True)).permute(2, 0, 1).contiguous()
+                )
         return make_sample(
             current,
             instruction,
@@ -252,6 +282,7 @@ class JointPolicyDataset:
             horizon=self.horizon,
             native_ar_text=self.native_ar_text,
             video_only=self.video_only,
+            prefix_image=prefix_image,
         )
 
 

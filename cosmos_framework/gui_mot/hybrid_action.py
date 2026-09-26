@@ -182,20 +182,37 @@ class PredictedFutureConditioner(nn.Module):
         return self.future(future_tokens)
 
 
-def tokenize_action_targets(tokenizer, texts):
-    """Tokenize only assistant action text; prompt tokens never enter action CE."""
-    result = []
+def tokenize_action_targets(tokenizer, texts, *, return_masks=False):
+    """Tokenize actions and optionally mask everything outside the official answer JSON."""
+    result, masks = [], []
     for text in texts:
         if not isinstance(text, str) or not text:
             raise ValueError("Hybrid AR training requires nonempty action text")
-        ids = tokenizer.encode(text, add_special_tokens=False)
+        if return_masks:
+            encoded = tokenizer(text, add_special_tokens=False, return_offsets_mapping=True)
+            ids = list(encoded["input_ids"])
+            offsets = encoded["offset_mapping"]
+            if "<answer>\n" in text and "\n</answer>" in text:
+                start = text.index("<answer>\n") + len("<answer>\n")
+                end = text.index("\n</answer>", start)
+                mask = [token_end > start and token_start < end for token_start, token_end in offsets]
+            else:
+                mask = [True] * len(ids)
+        else:
+            ids = tokenizer.encode(text, add_special_tokens=False)
         if not ids:
             raise ValueError("Tokenizer produced an empty action target")
         eos = tokenizer.eos_token_id
         if eos is not None and ids[-1] != eos:
             ids.append(eos)
+            if return_masks:
+                mask.append(False if "<answer>" in text else True)
         result.append(ids)
-    return result
+        if return_masks:
+            if len(mask) != len(ids) or not any(mask):
+                raise ValueError("Action target mask must select at least one token")
+            masks.append(mask)
+    return (result, masks) if return_masks else result
 
 
 def autoregressive_ce(logits, labels, *, token_mask=None):

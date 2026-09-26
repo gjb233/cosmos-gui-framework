@@ -171,10 +171,13 @@ class GuiJointModel(OmniMoTModel):
                 # sampler can run without decoding a future frame or invoking
                 # the teacher-forced AR training branch.
                 self._gui_action_target_ids = None
+                self._gui_action_target_masks = None
             elif any(not isinstance(text, str) or not text for text in texts):
                 raise ValueError("Hybrid AR batch mixes training and inference samples")
             else:
-                self._gui_action_target_ids = tokenize_action_targets(self._gui_processor().tokenizer, texts)
+                self._gui_action_target_ids, self._gui_action_target_masks = tokenize_action_targets(
+                    self._gui_processor().tokenizer, texts, return_masks=True
+                )
         return [sample["input_ids"].squeeze(0).tolist() for sample in self._gui_prefix]
 
     def _load_and_tokenize_text_data(self, data_batch, iteration):
@@ -197,6 +200,7 @@ class GuiJointModel(OmniMoTModel):
         data_batch_packed.gui_special_tokens = self.llm_special_tokens
         if (self.hybrid_ar or self.mot_joint) and self._gui_action_target_ids is not None:
             data_batch_packed.gui_action_target_ids = self._gui_action_target_ids
+            data_batch_packed.gui_action_target_masks = self._gui_action_target_masks
             if self.mot_joint:
                 data_batch_packed.gui_mot_joint = True
                 if self.video_only:
@@ -335,17 +339,22 @@ class GuiJointModel(OmniMoTModel):
                 )
             )
             if self.mot_joint or stage.enable_ar_loss:
-                ar_loss = autoregressive_ce(out_net["gui_ar_logits"], out_net["gui_ar_labels"])
-                kd_loss = teacher_kl(out_net["gui_ar_logits"], out_net["gui_ar_base_logits"])
+                ar_mask = out_net["gui_ar_token_mask"]
+                ar_loss = autoregressive_ce(out_net["gui_ar_logits"], out_net["gui_ar_labels"], token_mask=ar_mask)
+                kd_loss = teacher_kl(out_net["gui_ar_logits"], out_net["gui_ar_base_logits"], token_mask=ar_mask)
                 ar_logit_delta = out_net["gui_ar_max_logit_delta"]
                 ar_residual_ratio = out_net["gui_ar_residual_norm_ratio"]
                 total = total + self.hybrid_ce_weight * ar_loss + self.hybrid_kd_weight * kd_loss
                 with torch.no_grad():
                     labels = out_net["gui_ar_labels"]
-                    ar_token_accuracy = (out_net["gui_ar_logits"].argmax(-1) == labels).float().mean()
-                    ar_base_token_accuracy = (out_net["gui_ar_base_logits"].argmax(-1) == labels).float().mean()
-                    ar_base_ce = autoregressive_ce(out_net["gui_ar_base_logits"], labels)
-                    ar_sequence_exact = (out_net["gui_ar_logits"].argmax(-1) == labels).all().float()
+                    ar_token_accuracy = (
+                        (out_net["gui_ar_logits"].argmax(-1) == labels) * ar_mask
+                    ).sum() / ar_mask.sum()
+                    ar_base_token_accuracy = (
+                        (out_net["gui_ar_base_logits"].argmax(-1) == labels) * ar_mask
+                    ).sum() / ar_mask.sum()
+                    ar_base_ce = autoregressive_ce(out_net["gui_ar_base_logits"], labels, token_mask=ar_mask)
+                    ar_sequence_exact = ((out_net["gui_ar_logits"].argmax(-1) == labels) | ~ar_mask).all().float()
         action_metrics = {}
         if not self.video_only:
             with torch.no_grad():

@@ -66,7 +66,9 @@ def prepare_prefix(processor, batch):
     while isinstance(systems, list) and len(systems) == 1 and isinstance(systems[0], list):
         systems = systems[0]
     for current, caption, system in zip(screens, batch["ai_caption"], systems, strict=True):
-        image = Image.fromarray(current.permute(1, 2, 0).numpy())
+        # The native trainer moves metadata tensors to CUDA before prefix
+        # preparation; PIL/AutoProcessor still require host pixels.
+        image = Image.fromarray(current.detach().cpu().permute(1, 2, 0).numpy())
         messages = []
         if system:
             messages.append(
@@ -201,6 +203,14 @@ def hybrid_ar_forward(network, packed_seq, last_hidden_state, output_dict):
             network.language_model, **sample
         )
     labels = torch.tensor(targets[0], device=prompt.device, dtype=torch.long)
+    token_masks = getattr(packed_seq, "gui_action_target_masks", None)
+    token_mask = (
+        torch.ones_like(labels, dtype=torch.bool)
+        if token_masks is None
+        else torch.tensor(token_masks[0], device=prompt.device, dtype=torch.bool)
+    )
+    if token_mask.shape != labels.shape or not token_mask.any():
+        raise ValueError("Hybrid AR answer token mask is invalid")
     action_inputs = labels[:-1]
     action_embeddings = network.language_model.model.embed_tokens(action_inputs.unsqueeze(0))
     compute_dtype = (
@@ -278,6 +288,7 @@ def hybrid_ar_forward(network, packed_seq, last_hidden_state, output_dict):
         base_norm = action_hidden.float().norm(dim=-1).mean().clamp_min(1e-8)
         output_dict["gui_ar_residual_norm_ratio"] = residual_norm / base_norm
     output_dict["gui_ar_labels"] = labels.unsqueeze(0)
+    output_dict["gui_ar_token_mask"] = token_mask.unsqueeze(0)
 
 
 @torch.no_grad()

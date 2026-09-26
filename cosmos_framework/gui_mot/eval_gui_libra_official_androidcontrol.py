@@ -6,55 +6,7 @@ import re
 import time
 from pathlib import Path
 
-SYSTEM_PROMPT = """You are a GUI agent. You are given a task and a screenshot of the screen. You need to perform a series of actions to complete the task. You need to choose actions from the the following list:
-action_type: Click, action_target: Element description, value: None, point_2d: [x, y]
-    ## Explanation: Tap or click a specific UI element and provide its coordinates
-
-action_type: Write, action_target: Element description or None, value: Text to enter, point_2d: [x, y]
-    ## Explanation: Enter text into a specific input field or at the current focus if coordinate is None
-
-action_type: LongPress, action_target: Element description, value: None, point_2d: [x, y]
-    ## Explanation: Press and hold on a specific UI element (mobile only) and provide its coordinates
-
-action_type: Scroll, action_target: None, value: "up" | "down" | "left" | "right", point_2d: None
-    ## Explanation: Scroll a view or container in the specified direction
-
-action_type: Wait, action_target: None, value: Number of seconds, point_2d: None
-    ## Explanation: Pause execution to allow the UI to load or update
-
-action_type: NavigateBack, action_target: None, value: None, point_2d: None
-    ## Explanation: Press the system "Back" button
-
-action_type: OpenApp, action_target: None, value: App name, point_2d: None
-    ## Explanation: Launch an app by its name (mobile only)
-
-action_type: Terminate, action_target: None, value: End-task message, point_2d: None
-    ## Explanation: Signal the end of the current task with a final message
-"""
-
-RESPONSE_TEMPLATE = """The response should be structured in the following format:
-<thinking>Your step-by-step thought process here...</thinking>
-<answer>
-{
-  "action_type": "the type of action to perform, e.g., Click, Write, Scroll, Answer, etc. Please follow the system prompt for available actions.",
-  "action_target": "the description of the target of the action, such as the color, text, or position on the screen of the UI element to interact with",
-  "value": "the input text or direction ('up', 'down', 'left', 'right') for the 'scroll' action, if applicable; otherwise, use 'None'",
-  "point_2d": [x, y]
-}
-</answer>"""
-
-
-def official_query(row, image_size):
-    history = "".join(
-        f"\nStep {index + 1}\n Action: {action}\n" for index, action in enumerate(row.get("previous_actions", []) or [])
-    )
-    size = f"(original image size {image_size[0]}x{image_size[1]})"
-    question = (
-        f"Please generate the next move according to the UI screenshot {size}, "
-        "instruction and previous actions.\n\n"
-        f"Instruction: {row['step_instruction']}\n\nInteraction History: {history}\n"
-    )
-    return question + "\n" + RESPONSE_TEMPLATE
+from .official_format import SYSTEM_PROMPT, official_query
 
 
 def extract_plan_fields(text):
