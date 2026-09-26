@@ -5,6 +5,7 @@
 
 EMBODIMENT_TO_DOMAIN_ID: dict[str, int] = {
     "no_action": 0,
+    "android_gui": 33,  # new domain; retired slots remain unused
     "av": 1,
     "camera_pose": 2,
     "hand_pose": 3,
@@ -62,6 +63,7 @@ EMBODIMENT_TO_DOMAIN_ID: dict[str, int] = {
 
 
 EMBODIMENT_TO_RAW_ACTION_DIM: dict[str, int] = {
+    "android_gui": 12,
     "av": 9,
     "camera_pose": 9,
     "pusht": 2,

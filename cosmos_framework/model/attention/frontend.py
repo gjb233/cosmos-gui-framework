@@ -8,9 +8,11 @@ Unified implementation for all Attention implementations.
 Frontend APIs
 """
 
+import os
 from math import prod
 
 import torch
+import torch.nn.functional as F
 from torch import Tensor
 
 from cosmos_framework.model.attention.backends import choose_backend, choose_multi_dim_backend
@@ -42,6 +44,48 @@ BACKEND_MAP = {
 MULTI_DIM_BACKEND_MAP = {
     "natten": natten_multi_dim_attention,
 }
+
+
+def _gui_torch_sdpa_fallback(
+    query: Tensor,
+    key: Tensor,
+    value: Tensor,
+    *,
+    is_causal: bool,
+    causal_type: CausalType | None,
+    scale: float,
+    cumulative_seqlen_Q: Tensor | None,
+    cumulative_seqlen_KV: Tensor | None,
+) -> Tensor:
+    """Eager fallback for GUI experiments on hosts without packaged attention kernels."""
+
+    def one(q: Tensor, k: Tensor, v: Tensor) -> Tensor:
+        q = q.transpose(1, 2)
+        k = k.transpose(1, 2)
+        v = v.transpose(1, 2)
+        if is_causal and causal_type == CausalType.BottomRight:
+            q_len, k_len = q.shape[-2], k.shape[-2]
+            qi = torch.arange(q_len, device=q.device)[:, None]
+            ki = torch.arange(k_len, device=q.device)[None, :]
+            mask = ki <= qi + (k_len - q_len)
+            result = F.scaled_dot_product_attention(q, k, v, attn_mask=mask, scale=scale, enable_gqa=True)
+        else:
+            result = F.scaled_dot_product_attention(q, k, v, is_causal=is_causal, scale=scale, enable_gqa=True)
+        return result.transpose(1, 2)
+
+    if cumulative_seqlen_Q is None:
+        return one(query, key, value)
+    if cumulative_seqlen_KV is None or query.shape[0] != 1 or key.shape[0] != 1:
+        raise ValueError("GUI SDPA fallback expects packed batch size one with Q and KV offsets")
+    q_offsets = cumulative_seqlen_Q.tolist()
+    kv_offsets = cumulative_seqlen_KV.tolist()
+    chunks = []
+    for i in range(len(q_offsets) - 1):
+        q0, q1 = q_offsets[i : i + 2]
+        k0, k1 = kv_offsets[i : i + 2]
+        if q1 > q0:
+            chunks.append(one(query[:, q0:q1], key[:, k0:k1], value[:, k0:k1]))
+    return torch.cat(chunks, dim=1)
 
 
 def attention(
@@ -224,6 +268,19 @@ def attention(
     )
 
     # Either incompatible backend specified by user, or no compatible backends found
+    if compatible_backend is None and backend is None and os.environ.get("GUI_TORCH_SDPA_FALLBACK") == "1":
+        if return_lse:
+            raise ValueError("GUI SDPA fallback does not support returning logsumexp")
+        return _gui_torch_sdpa_fallback(
+            query,
+            key,
+            value,
+            is_causal=is_causal,
+            causal_type=causal_type,
+            scale=scale,
+            cumulative_seqlen_Q=cumulative_seqlen_Q,
+            cumulative_seqlen_KV=cumulative_seqlen_KV,
+        )
     if compatible_backend is None and backend is None:
         raise ValueError(
             "Could not find a compatible Attention backend for this use case / device. "
