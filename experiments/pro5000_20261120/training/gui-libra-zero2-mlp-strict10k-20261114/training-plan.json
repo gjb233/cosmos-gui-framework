@@ -1,0 +1,49 @@
+{
+  "optimizer_steps": 725,
+  "warmup_steps": 7,
+  "global_batch": 256,
+  "microbatch": 8,
+  "gradient_accumulation": 4,
+  "learning_rate": 1e-05,
+  "original_draws": 185695,
+  "used_draws": 185600,
+  "dropped_final_incomplete_batch": 95,
+  "samples": 61864,
+  "manifest": "/data/mai/training/gui-libra-zero2-mlp-strict10k-20261114/train-manifest.jsonl",
+  "manifest_sha256": "7921a98cbd41a00b7cd24993dcc59a100b0797a99af9c49f61bcc47dc2719411",
+  "phase_sha256": [
+    "6d81bf282d0a44dd584838953ac7aaa60b93a781502403afea3cc45a3a33ec6b",
+    "87258037c39243c33d2655885d3a172e52211d4a8604b2d38e290bc8a9910d9a"
+  ],
+  "initial_ar": "GUI-Libra/GUI-Libra-8B original",
+  "initial_fm": "Cosmos3-Nano-DCP base",
+  "lora_rank": 16,
+  "lora_alpha": 32,
+  "train_attention_and_mlp_both_branches": true,
+  "activation_checkpointing": "full",
+  "save_every": 50,
+  "initial_save_step": 2,
+  "initial_ar_revision": "15ee285bc1e279eee1b7ea5e953b7dd823e6dbd3",
+  "protocol": "GUI-Libra native direct answer, full verified action history",
+  "initial_ar_path": "/data/mai/benchmarks/gui-libra-base/ready-model",
+  "initial_ar_weights": {
+    "model-00001-of-00004.safetensors": {
+      "sha256": "05730ab0b20b817b166965510d77cc04fdceecfca7ed07bf14de4f6995b58b79",
+      "path": "/data/mai/benchmarks/gui-libra-base/model/model-00001-of-00004.safetensors"
+    },
+    "model-00004-of-00004.safetensors": {
+      "sha256": "eeafdce81f0546ca4a7bb645f0f27013d15f1519ad3d280f9bf54305565444dd",
+      "path": "/data/mai/benchmarks/gui-libra-base/model/model-00004-of-00004.safetensors"
+    },
+    "model-00002-of-00004.safetensors": {
+      "sha256": "532a7459642847e41d1816049251c0846710610bb3b01dcec4d180bd3e4c9043",
+      "path": "/data/mai/benchmarks/gui-libra-base/mirror-model/model-00002-of-00004.safetensors"
+    },
+    "model-00003-of-00004.safetensors": {
+      "sha256": "580d7849fead7b42edb0d63ae2ef6ab14ae6fa99dca601a9f452274f33f12014",
+      "path": "/data/mai/benchmarks/gui-libra-base/mirror-model/model-00003-of-00004.safetensors"
+    }
+  },
+  "fresh_optimizer": true,
+  "fresh_lora": true
+}

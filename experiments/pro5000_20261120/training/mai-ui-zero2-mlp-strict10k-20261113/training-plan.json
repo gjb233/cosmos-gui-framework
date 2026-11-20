@@ -1,0 +1,26 @@
+{
+  "optimizer_steps": 725,
+  "warmup_steps": 7,
+  "global_batch": 256,
+  "microbatch": 8,
+  "gradient_accumulation": 4,
+  "learning_rate": 1e-05,
+  "original_draws": 185764,
+  "used_draws": 185600,
+  "dropped_final_incomplete_batch": 164,
+  "samples": 61887,
+  "manifest": "/data/mai/assets/training-ready-strict-10k-20261113/train-manifest.jsonl",
+  "manifest_sha256": "e87030227e391d9b59d56141cab40753895cf7b713aa40026ce28261963e5877",
+  "phase_sha256": [
+    "e787dc1c17855184d22813a44ef680a39f0b82ea976510e4503a561061785949",
+    "a059e6da4d505b5daf0532b4b65626a9f2d83918dbf81bb12bde5f6862958225"
+  ],
+  "initial_ar": "MAI-UI-8B original",
+  "initial_fm": "Cosmos3-Nano-DCP base",
+  "lora_rank": 16,
+  "lora_alpha": 32,
+  "train_attention_and_mlp_both_branches": true,
+  "activation_checkpointing": "full",
+  "save_every": 50,
+  "initial_save_step": 2
+}

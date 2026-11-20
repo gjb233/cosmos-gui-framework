@@ -260,9 +260,19 @@ class WandbCallback(Callback):
         self.final_loss_log.loss += loss.detach().float()
         self.final_loss_log.iter_count += 1
 
+        gui_loss_keys = {
+            "gui_ar_ce",
+            "gui_ar_kd",
+            "gui_action_inactive",
+            "gui_plan_x0_huber",
+            "gui_action_type",
+            "gui_action_xy",
+            "gui_action_direction",
+        }
         for key in output_batch.keys():
-            # Curve can be plotted only on aggregated loss, not per-instance loss
-            if not key.startswith("_") and "loss" in key and "per_instance" not in key:
+            # Include GUI MoT's named objectives, which do not have "loss" in their keys.
+            # Per-instance tensors are excluded because W&B detail curves are scalar.
+            if not key.startswith("_") and "per_instance" not in key and ("loss" in key or key in gui_loss_keys):
                 if key not in self.final_all_loss_log:
                     self.final_all_loss_log[key] = _LossRecord()
                 self.final_all_loss_log[key].loss += output_batch[key].detach().float()

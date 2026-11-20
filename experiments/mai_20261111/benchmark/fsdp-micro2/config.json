@@ -1,0 +1,135 @@
+{
+  "version": 1,
+  "seed": 42,
+  "data_root": "/rscratch/wzzheng/datasets/gui-libra-81k-sft-20261028-v1",
+  "image_root": "/rscratch/wzzheng/datasets/gui-libra-81k-sft-20261028-v1/extracted",
+  "dataset_revision": "05bb2c5f7e81de38f3d7826739db46913dd08a23",
+  "history_steps": "all available verified prior trajectory actions, no last4 truncation",
+  "sources": {
+    "aitw": {
+      "count": 6088,
+      "weight": 0.0866212313077131
+    },
+    "amex": {
+      "count": 18928,
+      "weight": 0.2693112132379096
+    },
+    "android_control": {
+      "count": 13428,
+      "weight": 0.19105615867279427
+    },
+    "coat-terminal": {
+      "count": 5870,
+      "weight": 0.08351948550858672
+    },
+    "gui-odyssey": {
+      "count": 15439,
+      "weight": 0.21966905226014827
+    },
+    "guiact-web-chinese": {
+      "count": 3872,
+      "weight": 0.05509155841384118
+    },
+    "guiact-web": {
+      "count": 2876,
+      "weight": 0.040920279441685754
+    },
+    "mind2web": {
+      "count": 3782,
+      "weight": 0.053811021157321115
+    }
+  },
+  "sampling": {
+    "order": [
+      "source",
+      "base_record",
+      "instruction_level",
+      "answer_style"
+    ],
+    "dual_level_low_probability": 0.5,
+    "single_level": "keep_available_level_without_duplication",
+    "missing_source": "fail",
+    "phase1": {
+      "draws": 70358,
+      "reasoning_probability_when_both": 0,
+      "direct_only": true
+    },
+    "phase2": {
+      "draws": 140604,
+      "reasoning_only": false,
+      "direct_only": true
+    },
+    "note": "Three base-record-equivalent epochs. This custom exposure budget is not an exact reproduction of official mixed-file epoch lengths.",
+    "answer_style": "direct_only",
+    "missing_native_low": "use_verified_current_step_action_description_else_keep_high",
+    "instruction_source_policy": {
+      "coat-terminal": {
+        "mode": "high_and_verified_description_low",
+        "field": "original_instruction",
+        "use_action_description_as_low": true
+      },
+      "gui-odyssey": {
+        "accept_dataset_generated_low": true,
+        "exclude_test_overlap_only": true,
+        "excluded_test_rows": 4235,
+        "retained_split_candidates": 16999
+      }
+    },
+    "derived_low": {
+      "enabled": true,
+      "source": "current_step_action_description",
+      "preserve_original_text": true,
+      "require_current_step_binding": true,
+      "require_semantic_action_alignment": true,
+      "screen_description_is_not_low": true,
+      "exclude_future_outcome_text": true,
+      "high_input_excludes_current_description": true
+    }
+  },
+  "loss": {
+    "ce_weight": 1.0,
+    "fm_weight": 1.0,
+    "fm_missing_target": 0,
+    "fm_normalization": "all_global_samples_not_only_transition_samples",
+    "ce_supervision": "assistant_target_only",
+    "history_loss": false
+  },
+  "train": {
+    "models": [
+      "MAI-UI-8B"
+    ],
+    "comparisons": [
+      "CE+FM_verified_transitions"
+    ],
+    "fresh_base": false,
+    "world_size": 7,
+    "micro_batch_per_gpu": 2,
+    "gradient_accumulation": 4,
+    "global_batch": 56,
+    "learning_rate": 1e-05,
+    "weight_decay": 0.0,
+    "betas": [
+      0.9,
+      0.99
+    ],
+    "gradient_clip": 1.0,
+    "lora_rank": 16,
+    "lora_alpha": 32,
+    "base_dtype": "bfloat16",
+    "trainable_dtype": "float32",
+    "checkpoint_every": 25,
+    "warmup_fraction": 0.01,
+    "schedule": "linear_decay",
+    "loss_weights_are_initial_proposal": true,
+    "launch_enabled": true,
+    "max_iter": 354
+  },
+  "admission_basis": "user_authorized_published_labels",
+  "launch_enabled": true,
+  "scope": "Eight-source published CE labels with official consecutive real frame FM; no exact original-action equivalence claim",
+  "resolution": {
+    "ar": "original, nearest32 processor alignment, no pixel downscale",
+    "fm": "longest edge at most640, preserve aspect ratio align32"
+  },
+  "protocol": "MAI native no-thinking with user-approved action extensions"
+}

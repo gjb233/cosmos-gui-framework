@@ -1,0 +1,55 @@
+{
+  "optimizer_steps": 736,
+  "warmup_steps": 7,
+  "global_batch": 256,
+  "microbatch": 8,
+  "gradient_accumulation": 4,
+  "learning_rate": 1e-05,
+  "original_draws": 188501,
+  "used_draws": 188416,
+  "dropped_final_incomplete_batch": 85,
+  "samples": 62799,
+  "manifest": "/data/mai/training/gui-libra-official-sft-20261117/train-manifest.jsonl",
+  "manifest_sha256": "778484b3196895068f5ab55c322afd6d4c4c9c553fdb05730e0fcd70b2714c9d",
+  "phase_sha256": [
+    "3b1b87360cab7527ef360e91cbccd918253caef0c379d2eef734a6fe329d7a24",
+    "9401eb1a27d0d26c9a438ba1161c1aff9e369cab7acba57269df0350b0a332e3"
+  ],
+  "initial_ar": "GUI-Libra/GUI-Libra-8B original",
+  "initial_fm": "Cosmos3-Nano-DCP base",
+  "lora_rank": 16,
+  "lora_alpha": 32,
+  "train_attention_and_mlp_both_branches": true,
+  "activation_checkpointing": "full",
+  "save_every": 50,
+  "initial_save_step": 2,
+  "initial_ar_revision": "15ee285bc1e279eee1b7ea5e953b7dd823e6dbd3",
+  "protocol": "Official GUI-Libra source conversations, direct-only five fields; Low instruction substitution when no published Low conversation",
+  "initial_ar_path": "/data/mai/benchmarks/gui-libra-base/ready-model",
+  "initial_ar_weights": {
+    "model-00001-of-00004.safetensors": {
+      "sha256": "05730ab0b20b817b166965510d77cc04fdceecfca7ed07bf14de4f6995b58b79",
+      "path": "/data/mai/benchmarks/gui-libra-base/model/model-00001-of-00004.safetensors"
+    },
+    "model-00004-of-00004.safetensors": {
+      "sha256": "eeafdce81f0546ca4a7bb645f0f27013d15f1519ad3d280f9bf54305565444dd",
+      "path": "/data/mai/benchmarks/gui-libra-base/model/model-00004-of-00004.safetensors"
+    },
+    "model-00002-of-00004.safetensors": {
+      "sha256": "532a7459642847e41d1816049251c0846710610bb3b01dcec4d180bd3e4c9043",
+      "path": "/data/mai/benchmarks/gui-libra-base/mirror-model/model-00002-of-00004.safetensors"
+    },
+    "model-00003-of-00004.safetensors": {
+      "sha256": "580d7849fead7b42edb0d63ae2ef6ab14ae6fa99dca601a9f452274f33f12014",
+      "path": "/data/mai/benchmarks/gui-libra-base/mirror-model/model-00003-of-00004.safetensors"
+    }
+  },
+  "fresh_optimizer": true,
+  "fresh_lora": true,
+  "template_sha256": "70e462ba07a9e72eb5b50d75d77e54503e8b1a8f07946ec622d747fc1edae8da",
+  "ready_to_launch": true,
+  "pending_checks": [],
+  "parent_run": "/data/mai/training/gui-libra-natural-history-full-20261117",
+  "max_input_tokens": null,
+  "restored_length_filtered_samples": 936
+}

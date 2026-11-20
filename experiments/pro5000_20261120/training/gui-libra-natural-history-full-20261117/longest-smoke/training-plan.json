@@ -1,0 +1,55 @@
+{
+  "optimizer_steps": 2,
+  "warmup_steps": 1,
+  "global_batch": 256,
+  "microbatch": 8,
+  "gradient_accumulation": 4,
+  "learning_rate": 1e-05,
+  "original_draws": 512,
+  "used_draws": 512,
+  "dropped_final_incomplete_batch": 0,
+  "samples": 62800,
+  "manifest": "/data/mai/training/gui-libra-natural-history-full-20261117/longest-smoke/train-manifest.jsonl",
+  "manifest_sha256": "5f5e859872496e35886dae9bffc1aa22d28583205b6aa2e6b4c8043e81570c19",
+  "phase_sha256": [
+    "bc5d317e1b2111e1e27d550f31dbaf6a74d333b80caf31df4a315dd0cadaf060",
+    "bc5d317e1b2111e1e27d550f31dbaf6a74d333b80caf31df4a315dd0cadaf060"
+  ],
+  "initial_ar": "GUI-Libra/GUI-Libra-8B original",
+  "initial_fm": "Cosmos3-Nano-DCP base",
+  "lora_rank": 16,
+  "lora_alpha": 32,
+  "train_attention_and_mlp_both_branches": true,
+  "activation_checkpointing": "full",
+  "save_every": 50,
+  "initial_save_step": 2,
+  "initial_ar_revision": "15ee285bc1e279eee1b7ea5e953b7dd823e6dbd3",
+  "protocol": "Original published natural-language history; direct-only High AW core and Low AC; same frozen template for both evaluation models",
+  "initial_ar_path": "/data/mai/benchmarks/gui-libra-base/ready-model",
+  "initial_ar_weights": {
+    "model-00001-of-00004.safetensors": {
+      "sha256": "05730ab0b20b817b166965510d77cc04fdceecfca7ed07bf14de4f6995b58b79",
+      "path": "/data/mai/benchmarks/gui-libra-base/model/model-00001-of-00004.safetensors"
+    },
+    "model-00004-of-00004.safetensors": {
+      "sha256": "eeafdce81f0546ca4a7bb645f0f27013d15f1519ad3d280f9bf54305565444dd",
+      "path": "/data/mai/benchmarks/gui-libra-base/model/model-00004-of-00004.safetensors"
+    },
+    "model-00002-of-00004.safetensors": {
+      "sha256": "532a7459642847e41d1816049251c0846710610bb3b01dcec4d180bd3e4c9043",
+      "path": "/data/mai/benchmarks/gui-libra-base/mirror-model/model-00002-of-00004.safetensors"
+    },
+    "model-00003-of-00004.safetensors": {
+      "sha256": "580d7849fead7b42edb0d63ae2ef6ab14ae6fa99dca601a9f452274f33f12014",
+      "path": "/data/mai/benchmarks/gui-libra-base/mirror-model/model-00003-of-00004.safetensors"
+    }
+  },
+  "fresh_optimizer": true,
+  "fresh_lora": true,
+  "template_sha256": "8b273c755634bf7e2e03ec5744ab9f4a6dd817c5a9520bab2811793c34fbd9ee",
+  "ready_to_launch": true,
+  "pending_checks": [],
+  "parent_run": "/data/mai/training/gui-libra-awhigh-aclow-20261116",
+  "max_input_tokens": null,
+  "restored_length_filtered_samples": 936
+}

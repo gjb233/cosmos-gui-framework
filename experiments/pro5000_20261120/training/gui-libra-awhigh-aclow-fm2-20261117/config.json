@@ -1,0 +1,145 @@
+{
+  "version": 1,
+  "seed": 42,
+  "data_root": "/data/mai/assets/gui-libra-81k-sft-20261028-v1/snapshot",
+  "image_root": "/data/mai/assets/gui-libra-81k-sft-20261028-v1/extracted",
+  "dataset_revision": "05bb2c5f7e81de38f3d7826739db46913dd08a23",
+  "history_steps": "all verified prior actions, deterministic complete parameter descriptions",
+  "sources": {
+    "aitw": {
+      "count": 5308,
+      "weight": 0.08580111211690158
+    },
+    "amex": {
+      "count": 18928,
+      "weight": 0.3059614638562007
+    },
+    "android_control": {
+      "count": 13428,
+      "weight": 0.21705676968834864
+    },
+    "coat-terminal": {
+      "count": 3987,
+      "weight": 0.0644478210267684
+    },
+    "gui-odyssey": {
+      "count": 14503,
+      "weight": 0.23443359627570154
+    },
+    "guiact-web-chinese": {
+      "count": 1130,
+      "weight": 0.018265873529031425
+    },
+    "guiact-web": {
+      "count": 798,
+      "weight": 0.012899262899262898
+    },
+    "mind2web": {
+      "count": 3782,
+      "weight": 0.06113410060778482
+    }
+  },
+  "sampling": {
+    "order": [
+      "source",
+      "base_record",
+      "instruction_level",
+      "answer_style"
+    ],
+    "dual_level_low_probability": 0.5,
+    "single_level": "keep_available_level_without_duplication",
+    "missing_source": "fail",
+    "phase1": {
+      "draws": 61931,
+      "reasoning_probability_when_both": 0,
+      "direct_only": true,
+      "reasoning_only": false
+    },
+    "phase2": {
+      "draws": 123764,
+      "reasoning_only": false,
+      "direct_only": true,
+      "reasoning_probability_when_both": 0
+    },
+    "note": "Three base-record-equivalent epochs. This custom exposure budget is not an exact reproduction of official mixed-file epoch lengths.",
+    "answer_style": "direct_only",
+    "missing_native_low": "use_verified_current_step_action_description_else_keep_high",
+    "instruction_source_policy": {
+      "coat-terminal": {
+        "mode": "high_and_verified_description_low",
+        "field": "original_instruction",
+        "use_action_description_as_low": true
+      },
+      "gui-odyssey": {
+        "accept_dataset_generated_low": true,
+        "exclude_test_overlap_only": true,
+        "excluded_test_rows": 4235,
+        "retained_split_candidates": 16999
+      }
+    },
+    "derived_low": {
+      "enabled": true,
+      "source": "current_step_action_description",
+      "preserve_original_text": true,
+      "require_current_step_binding": true,
+      "require_semantic_action_alignment": true,
+      "screen_description_is_not_low": true,
+      "exclude_future_outcome_text": true,
+      "high_input_excludes_current_description": true
+    }
+  },
+  "loss": {
+    "ce_weight": 1.0,
+    "fm_weight": 2.0,
+    "fm_missing_target": 0,
+    "fm_normalization": "all_global_samples_not_only_transition_samples",
+    "ce_supervision": "assistant_target_only",
+    "history_loss": false
+  },
+  "train": {
+    "models": [
+      "GUI-Libra-8B"
+    ],
+    "comparisons": [
+      "CE+FM_verified_transitions"
+    ],
+    "fresh_base": true,
+    "world_size": 8,
+    "micro_batch_per_gpu": 8,
+    "gradient_accumulation": 4,
+    "global_batch": 256,
+    "learning_rate": 1e-05,
+    "weight_decay": 0.0,
+    "betas": [
+      0.9,
+      0.99
+    ],
+    "gradient_clip": 1.0,
+    "lora_rank": 16,
+    "lora_alpha": 32,
+    "base_dtype": "bfloat16",
+    "trainable_dtype": "float32",
+    "checkpoint_every": 50,
+    "warmup_fraction": 0.01,
+    "schedule": "linear_decay",
+    "loss_weights_are_initial_proposal": true,
+    "launch_enabled": true,
+    "max_iter": 725,
+    "activation_checkpointing": "full",
+    "lora_target_modules": "q_proj,k_proj,v_proj,o_proj,q_proj_moe_gen,k_proj_moe_gen,v_proj_moe_gen,o_proj_moe_gen,mlp.gate_proj,mlp.up_proj,mlp.down_proj,mlp_moe_gen.gate_proj,mlp_moe_gen.up_proj,mlp_moe_gen.down_proj"
+  },
+  "admission_basis": "user_authorized_published_labels",
+  "launch_enabled": true,
+  "scope": "Eight-source published CE labels with official consecutive real frame FM; no exact original-action equivalence claim",
+  "resolution": {
+    "ar": "original, nearest32 processor alignment, no pixel downscale",
+    "fm": "longest edge at most640, preserve aspect ratio align32"
+  },
+  "protocol": "GUI-Libra native direct answer, full verified action history",
+  "templates": {
+    "high": "AndroidWorld core direct-only, action_description, no GUIDANCE",
+    "low": "AC Low direct-only, action_target",
+    "reasoning": "disabled by user; prompt and assistant target are direct-only",
+    "coordinates": "0..1000; unavailable [-100,-100]"
+  }
+}

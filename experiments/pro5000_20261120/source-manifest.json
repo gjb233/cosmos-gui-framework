@@ -1,0 +1,1758 @@
+[
+  {
+    "path": "ac-cross-20261115/collect.py",
+    "sha256": "6eef71194f02b77f9942cba7241b078c1ea2f77e45da974d4c359c763c0cc5a4"
+  },
+  {
+    "path": "ac-cross-20261115/launch.py",
+    "sha256": "4905370a050f44e9207c217eae3fb5f2e32158731925041b2979824a5ff4cdfa"
+  },
+  {
+    "path": "ac-cross-20261115/parallel.py",
+    "sha256": "ff0d8f7f066a6b75ce5e0e439c2f3ee45a01056223d3eb44c02872a4b0973e94"
+  },
+  {
+    "path": "ac-cross-20261115/pipeline.py",
+    "sha256": "7662daa91d78ba465c005b49b6236950078561344b2263f1d7f14b1351b13891"
+  },
+  {
+    "path": "ac-cross-20261115/prompt_adapter.py",
+    "sha256": "168a5322d6135c54e417e191ff987f06bac419bdbaa8b096d1df7297802946d1"
+  },
+  {
+    "path": "ac-cross-20261115/web_client.py",
+    "sha256": "980673d93d3992ca1008b7311ef43515454c4460ca2e89a2f3d7fb0d09865b97"
+  },
+  {
+    "path": "ac-cross-20261115/web_collect.py",
+    "sha256": "e00ea0ec3ccc19db186a79330b6e1d5eb66a6cc8fa52858f29df812f3ebd18a6"
+  },
+  {
+    "path": "ac-cross-20261115/web_run.py",
+    "sha256": "1cf4c32a3badb3d6d9d86bf6bda8602379de0531ce6ff90b5a5608eff12f2dd3"
+  },
+  {
+    "path": "ac-cross-20261115/worker.py",
+    "sha256": "e025367ee4c7ea0972cbe0846684bd87e6a593e9609c149c46c1065191098ded"
+  },
+  {
+    "path": "aw-base-matched-20261118/androidworld_eval.py",
+    "sha256": "be921002c0964b4460b2397a2d22e84923932e8035fedfe589d8cbbfed1549bd"
+  },
+  {
+    "path": "aw-base-matched-20261118/androidworld_parallel.py",
+    "sha256": "f175697f634ff3867d4d00e26a616de9b50de900205426d11da801aeb0778296"
+  },
+  {
+    "path": "aw-base-matched-20261118/collect_androidworld.py",
+    "sha256": "b0e582eec238d0a6e2b62d7aaa53c445fb400d32d30c1817f4a724833b7b1594"
+  },
+  {
+    "path": "aw-base-matched-20261118/compare.py",
+    "sha256": "e147793ce3560d3fbcc7fea133c12f3b9ea25b68056c91b434c9351167e3e6c3"
+  },
+  {
+    "path": "aw-base-matched-20261118/libra_protocol.py",
+    "sha256": "71e7a0bddc0e66dd18c61038d4c0778711c8efbd3fcba2c64fe2357b96c1e90e"
+  },
+  {
+    "path": "aw-base-matched-20261118/pipeline.py",
+    "sha256": "d3d0b35261d014f83319c166048d129cd43ba7804577057d9a2e96ada7a36047"
+  },
+  {
+    "path": "aw-cross-20261116/pipeline.py",
+    "sha256": "53f38af8a60f853eb776662e15a5a7e938be03f9e1bc65b68cbb4a291abafd95"
+  },
+  {
+    "path": "aw-cross-20261116/prompt_adapter.py",
+    "sha256": "3baa77a1c8fd31605a589ca75fd5d03f824c33e76986de78103bf0ad20a11394"
+  },
+  {
+    "path": "aw-cross-20261116/web_client.py",
+    "sha256": "bd928ee05b83b796dfea7bee8d4ef7893fb62c919fb371a0e444e26594edced6"
+  },
+  {
+    "path": "aw-cross-20261116/web_collect.py",
+    "sha256": "a149e47d7dd7c07fca5f708d1439512150a50510308bcd823ce23f1e92c19a72"
+  },
+  {
+    "path": "aw-cross-20261116/web_run.py",
+    "sha256": "187fa7f68bb8fb54e691f8286ef83a522c60125a48962b6605d0aaba0098bab8"
+  },
+  {
+    "path": "aw-fm2-step100-20261118/androidworld_eval.py",
+    "sha256": "0850ac229f7e9dba5d95d67688f8374d7aa80da7e359a81b40fc25c018d6abf7"
+  },
+  {
+    "path": "aw-fm2-step100-20261118/androidworld_parallel.py",
+    "sha256": "809e18202ac77765bbd98814faf420070e31d53720d9c6a0c38317704cb532d2"
+  },
+  {
+    "path": "aw-fm2-step100-20261118/collect_androidworld.py",
+    "sha256": "cfe96fd73a561463c9d59b93a7c468d66c531d4eb3bca2584c38666b0e71dfca"
+  },
+  {
+    "path": "aw-fm2-step100-20261118/libra_protocol.py",
+    "sha256": "71e7a0bddc0e66dd18c61038d4c0778711c8efbd3fcba2c64fe2357b96c1e90e"
+  },
+  {
+    "path": "aw-fm2-step100-20261118/pipeline.py",
+    "sha256": "4ca6749ca446a9d306e496630ae8ff636a67abbea223e072a20830f348a65a27"
+  },
+  {
+    "path": "direct-cross-20261116/prompt_adapter.py",
+    "sha256": "4bd4d4937a02ff05e2d3188dde05392f51e9685818bd5ec4d79d30101c6b7371"
+  },
+  {
+    "path": "direct-cross-20261116/web_client.py",
+    "sha256": "ac601994f3dea10d15d765e681c073c1c81e443b41b99884ecfa553a165b61cf"
+  },
+  {
+    "path": "direct-cross-20261116/web_collect.py",
+    "sha256": "e711944f43983e8abea9862286d413742af083d1f83fa1c38a6567b8824b7338"
+  },
+  {
+    "path": "direct-cross-20261116/web_run.py",
+    "sha256": "ff9f45958f434ce2eaaf94b0106e16663caf8cda02d2004ff6892c5834948391"
+  },
+  {
+    "path": "eval-direct-step300-20261117/merge.py",
+    "sha256": "c5b3660c47574a3969da59e82bafda60c7db5eb4e7dd4a70ed800b41ca7066f0"
+  },
+  {
+    "path": "eval-direct-step300-20261117/pipeline.py",
+    "sha256": "87e2c2438f2b7e5f09919a32d2513141403244f7efcab147626de3ecfe77b016"
+  },
+  {
+    "path": "eval-direct-step300-20261117/prompt_adapter.py",
+    "sha256": "4bd4d4937a02ff05e2d3188dde05392f51e9685818bd5ec4d79d30101c6b7371"
+  },
+  {
+    "path": "eval-direct-step300-20261117/web_client.py",
+    "sha256": "fd61b27fc58c56f7ae1f8e3f3fcd577cbf6933c0d7b9510cd331f6c8b48e49dc"
+  },
+  {
+    "path": "eval-direct-step300-20261117/web_collect.py",
+    "sha256": "b431ef46a9dcc15bb8cc4e246441f642f4846755e02e0c0689d25f7eb2b120e4"
+  },
+  {
+    "path": "eval-direct-step300-20261117/web_run.py",
+    "sha256": "f2615fd3bde03b10d42c71031d68eb7464ae93c2f96595c8457d751722ba33a9"
+  },
+  {
+    "path": "eval-fm1-step100-20261117/merge.py",
+    "sha256": "f6ff52e2878503670cf58a496c5d0008c8fda80454a4ae7d9ae32ddc1695e46b"
+  },
+  {
+    "path": "eval-fm1-step100-20261117/pipeline.py",
+    "sha256": "45fdff2a241a2add1466eaf82fe643acb63d9a744f4c6e1b7d25f5630aeefda8"
+  },
+  {
+    "path": "eval-fm1-step100-20261117/prompt_adapter.py",
+    "sha256": "84d6901292e74a8852cf285ceb0d975a8f63275e61173b7649845b06b39814ae"
+  },
+  {
+    "path": "eval-fm1-step100-20261117/templates.json",
+    "sha256": "a86b9a00fe94f78693fc015a2716723bbb37dd8386552163c82725f6d99c97a5"
+  },
+  {
+    "path": "eval-fm1-step100-20261117/web_client.py",
+    "sha256": "ef56ac028fd9438ddb3652358310c4e6f4f107b8f3f34e6ab83c0dcf9ec61227"
+  },
+  {
+    "path": "eval-fm1-step100-20261117/web_collect.py",
+    "sha256": "897b6875423190ce95cf3112521fbad5df2ce865e2f31f7757e81cd45281e7d9"
+  },
+  {
+    "path": "eval-fm1-step100-20261117/web_run.py",
+    "sha256": "0861673d730738595e74530c7e5a6037a628b66986140bb578eebba78075b1b4"
+  },
+  {
+    "path": "eval-fm2-step100-20261117/merge.py",
+    "sha256": "384902a38ad1a59b40c33643c56959c8a5f32a861c50adc9cc19e62c5d19ff46"
+  },
+  {
+    "path": "eval-fm2-step100-20261117/pipeline.py",
+    "sha256": "f0a9dd5b8e94f22f45500d9fff66d184f541e10af7ba747f8862b3f140f3a569"
+  },
+  {
+    "path": "eval-fm2-step100-20261117/prompt_adapter.py",
+    "sha256": "fdf42b0ba697aeec78e2412150595a217fcf3687d3987cb479b773724fd856c2"
+  },
+  {
+    "path": "eval-fm2-step100-20261117/templates.json",
+    "sha256": "a86b9a00fe94f78693fc015a2716723bbb37dd8386552163c82725f6d99c97a5"
+  },
+  {
+    "path": "eval-fm2-step100-20261117/web_client.py",
+    "sha256": "5f24e7273930dc1115fb052ac849a2f5b402183e818c61afa3fd273be320314f"
+  },
+  {
+    "path": "eval-fm2-step100-20261117/web_collect.py",
+    "sha256": "d9917825ec4eeeedbd46c0c28b3f09bcde4c05aa91a3c0aeef26ab12c9589eb7"
+  },
+  {
+    "path": "eval-fm2-step100-20261117/web_run.py",
+    "sha256": "c30851d2ea0301d53b9fdc9ab55119dfcfac40188a897d2f38fa853dea7175a0"
+  },
+  {
+    "path": "eval-natural-step250-20261117/merge.py",
+    "sha256": "40b1e09be8498d6e4ec04fbd3269ba838123f56d81062450e6e6324394b75f22"
+  },
+  {
+    "path": "eval-natural-step250-20261117/pipeline.py",
+    "sha256": "6af64f02a7a2414a767a2a4ffec8cc1afe95f68bfa08ae9d91cd0017c48c4fd7"
+  },
+  {
+    "path": "eval-natural-step250-20261117/prompt_adapter.py",
+    "sha256": "e062891b8201a74780c9c73611ef1cf12d2f123084d70492ee443c5155e2b057"
+  },
+  {
+    "path": "eval-natural-step250-20261117/web_client.py",
+    "sha256": "8423c0962dc8ed69fef2d5d7516017ec5c0527043f8c1440659d8b1e63495ba4"
+  },
+  {
+    "path": "eval-natural-step250-20261117/web_collect.py",
+    "sha256": "d5431ecc9884698ef0c093e837b45516652de72b87e5d9244b4de3f03c4bb650"
+  },
+  {
+    "path": "eval-natural-step250-20261117/web_run.py",
+    "sha256": "b7e0274b002ea7c8dfd95093cfc365c617415bbefb8798def0ace3d5c9cef7d0"
+  },
+  {
+    "path": "eval-official-sft-step100-20261117/merge.py",
+    "sha256": "95c0e5c8f0cb55d2d19394c37b3886517811064c489ab7ac7c06252c2e225663"
+  },
+  {
+    "path": "eval-official-sft-step100-20261117/pipeline.py",
+    "sha256": "520872f9e1925e1da0f759a86f68506229fbbb2ddf069a8527d079fb39118224"
+  },
+  {
+    "path": "eval-official-sft-step100-20261117/prompt_adapter.py",
+    "sha256": "459f52b9668ed08c20a7900e6f6f619873d2d1c42fc448dcaaee66e1c7461ea9"
+  },
+  {
+    "path": "eval-official-sft-step100-20261117/web_client.py",
+    "sha256": "7719a52ab7d23337e278e029972d4206dd721f6b8c91bc43a8f819ee39a98608"
+  },
+  {
+    "path": "eval-official-sft-step100-20261117/web_collect.py",
+    "sha256": "b340af2f5e04cbb7c50ebda35d4cb17b7f86a3ce691f753111b3e34706b9dc54"
+  },
+  {
+    "path": "eval-official-sft-step100-20261117/web_run.py",
+    "sha256": "5fdafc19fbf792050ab292dccd25e2ffce6b367d654457698933dabf52cc7e70"
+  },
+  {
+    "path": "eval400/collect_vllm_eval.py",
+    "sha256": "7346c76c9441e71c5f2be6c4d1e22cc670757851b6db5ce5784e6a2c9913660f"
+  },
+  {
+    "path": "eval400/merge_eval_models.py",
+    "sha256": "c501a8dcdb45062081d0ecbdcfbd6b11bec3037968e17916dea7f0b02ef4ca92"
+  },
+  {
+    "path": "eval400/run_vllm_eval.py",
+    "sha256": "637f6f86fa1779cc90637a567713d250d98cce85d644e73e3bd7773e3ca63ada"
+  },
+  {
+    "path": "eval400/vllm_eval_client.py",
+    "sha256": "b182453b364748d177022fc065a39ba081824024d145559e8395dc60a9880be9"
+  },
+  {
+    "path": "eval400/wait400_evaluate.py",
+    "sha256": "ba872a03101f7bc078acce5ddab9b9ed0eae1ec744219d1a91468005059c12c7"
+  },
+  {
+    "path": "history-params-eval-20261117/pipeline.py",
+    "sha256": "251d75a09f73cea628fe80214c624658c8e9bd149a12132b2009ff64948c24a9"
+  },
+  {
+    "path": "history-params-eval-20261117/prompt_adapter.py",
+    "sha256": "54c7104e0dd38fcead2d610a7362d5d291780e812edc2c648cc8b834709a9377"
+  },
+  {
+    "path": "history-params-eval-20261117/web_client.py",
+    "sha256": "0b4b6859900d1fc58a35ad1aaaf143ed7a97755838ba5482153e1feda432e5ec"
+  },
+  {
+    "path": "history-params-eval-20261117/web_collect.py",
+    "sha256": "b8442bb148ed36024de8048f63f8b22ecf42cd4459662559480377a889e9bc41"
+  },
+  {
+    "path": "history-params-eval-20261117/web_run.py",
+    "sha256": "bf56f1fb2323b8d82daf4eaff1f6b99fef1d00205ca4ac4bac603a0e702a3a69"
+  },
+  {
+    "path": "libra-all-eval/queue.py",
+    "sha256": "de652c1971b67c8fc8a9dcf27f4b6bade59cad608290d1c4683e3e6eb6f9f7d4"
+  },
+  {
+    "path": "libra-eval200/androidworld_eval.py",
+    "sha256": "9ffa92aaf6e7e9584a5ac67c11f9dda8ac260f91fcb0438616eb5abe108cce59"
+  },
+  {
+    "path": "libra-eval200/androidworld_parallel.py",
+    "sha256": "1b7ef2cd16948d6113058fde25bf32fe1ca776934d767cbc12895d9277a66da3"
+  },
+  {
+    "path": "libra-eval200/collect_androidworld.py",
+    "sha256": "9cc06492a737f94994929592b43abdd8565f6092a32255f8abff6133a9c7771f"
+  },
+  {
+    "path": "libra-eval200/collect_vllm_eval.py",
+    "sha256": "40d3cb1f280e33b3ca9a0312d0b0ec00ad2d13b2ab085885c277447110e1ac14"
+  },
+  {
+    "path": "libra-eval200/libra_protocol.py",
+    "sha256": "730f1965fe761321ae20f244154a63da9244da0c17caad6e2e3bbb7d952f7f80"
+  },
+  {
+    "path": "libra-eval200/merge_eval_models.py",
+    "sha256": "3045ac4b8c538c4e81723755fd1b2c077c80f7d56ae7d3d305c61da771802a70"
+  },
+  {
+    "path": "libra-eval200/run_vllm_eval.py",
+    "sha256": "c4f348f75539255602915e1852dd314bb2403a73ab6632f081b1bf900e24141a"
+  },
+  {
+    "path": "libra-eval200/vllm_eval_client.py",
+    "sha256": "96fa7bccb1002bc9f3426bb8ce773d9dd72e323c5f92e4c4b54ffff8b2ff3337"
+  },
+  {
+    "path": "libra-eval200/wait200_evaluate.py",
+    "sha256": "647caea95126f93973928c1324227d47fd15606f16c38d464e65275287c48856"
+  },
+  {
+    "path": "libra-fm2-eval50-150-20261118/mai200-repair.py",
+    "sha256": "0f60ef2bd8aa2a1f95c4cad43ae7ff5473df226e8923134fc16df75009d83137"
+  },
+  {
+    "path": "libra-fm2-eval50-150-20261118/queue.before-mai-priority.py",
+    "sha256": "bf74c61a1e266a1e7ea2971e74af1971a81f5eb98767541c8701ddcc8284a819"
+  },
+  {
+    "path": "libra-fm2-eval50-150-20261118/queue.py",
+    "sha256": "4e3d1fb5d11a88b1084199d142821c0ad89c8d74c5e6833ce8b1be50048feac8"
+  },
+  {
+    "path": "libra-paper-repro/collect.py",
+    "sha256": "3466be058ed2974a47eb75c199b407297f90af9a4d1263aef8e7db0666738b16"
+  },
+  {
+    "path": "libra-paper-repro/launch.py",
+    "sha256": "f052f2f2da392900482be0dcc4cdc0968834a3f5b6253b64e94284e0b7a06229"
+  },
+  {
+    "path": "libra-paper-repro/parallel.py",
+    "sha256": "554596ab8364502b98915f93e8e8bcf038fcbf0c394bcade35bbdd46b638273d"
+  },
+  {
+    "path": "libra-paper-repro/worker.py",
+    "sha256": "308aa6f2bb92cb955d70673a0b84e6e787402315731f9f8cbc815a7329099349"
+  },
+  {
+    "path": "natural-history-eval-20261117/pipeline.py",
+    "sha256": "ce7ed32cca77ccb68e3cbde7d82c14198ec504d936347138eebaefb7ca443e3c"
+  },
+  {
+    "path": "natural-history-eval-20261117/prompt_adapter.py",
+    "sha256": "e062891b8201a74780c9c73611ef1cf12d2f123084d70492ee443c5155e2b057"
+  },
+  {
+    "path": "natural-history-eval-20261117/web_client.py",
+    "sha256": "1f2ac1d8043247a88fd06120961e954ebd48854570c48aabe3280d2235dd091c"
+  },
+  {
+    "path": "natural-history-eval-20261117/web_collect.py",
+    "sha256": "c4dea967c687706610a38d413fc92bb319d5fd809ee40c42ce9bea15aa4dd25a"
+  },
+  {
+    "path": "natural-history-eval-20261117/web_run.py",
+    "sha256": "baf5d1781c91fe3697ff757ab6eb6d257c62d4edce1db9d439f7a110ad391cb7"
+  },
+  {
+    "path": "scripts/check_adapter_mapping.py",
+    "sha256": "83f034542e2bea87dc61dd37a4384af6bb007966317108cf9e440f8a423372c4"
+  },
+  {
+    "path": "scripts/check_eval_env.py",
+    "sha256": "d4d824b75f8ddaaf9e10a4d47be3365a7cd429e5074de0f9155ffe3b0070c19c"
+  },
+  {
+    "path": "scripts/collect_eval.py",
+    "sha256": "b30e49726ac8ed3fc204bdde506c96e277baf611024dd4ac2cf4e7a993ba0e3c"
+  },
+  {
+    "path": "scripts/collect_vllm_eval.py",
+    "sha256": "83517e5153015555e7fccb38a611842c57aefedd25d6ea5ee1b50cf398f59abf"
+  },
+  {
+    "path": "scripts/eval_worker.py",
+    "sha256": "88356bffe83cebcb8966ed75f0923c353b294145137b5c50854771bc6abda0f7"
+  },
+  {
+    "path": "scripts/filter_strict_10k.py",
+    "sha256": "c24b0e8b9cff4d7e8f7394becb1b7fddea53f88698082f15641bb7b47b3b2389"
+  },
+  {
+    "path": "scripts/gpu-smoke.py",
+    "sha256": "2824e1b88d62e99416bd8199d895a7415b6d4e47e5b7496a6fe382585aa2f859"
+  },
+  {
+    "path": "scripts/index-trajectory-images.py",
+    "sha256": "ad80af527fa325bf266d9fb80813c03f0f559d778fdf217db899bd2b08406953"
+  },
+  {
+    "path": "scripts/inspect_resume200.py",
+    "sha256": "e7743633b69b604c8ee0266c756c5a233d9328c05892ed188a167fa08296c6b3"
+  },
+  {
+    "path": "scripts/launch_libra_fulltrain.py",
+    "sha256": "c4dbb6a2c606dda95b72142f187229ab5c07457eb0133f3296f3746e768237ad"
+  },
+  {
+    "path": "scripts/launch_mai_fulltrain.py",
+    "sha256": "56b4f856622e0f2ac14268017ffa86d1db81e1800032218da9a2cc20203cf259"
+  },
+  {
+    "path": "scripts/libra-mirror-shard.py",
+    "sha256": "747399ba0211f822e8394b5153852eb9f247b90008f24f57379cf2a4deec9e6c"
+  },
+  {
+    "path": "scripts/libra-mirror-shard3.py",
+    "sha256": "22fe893f2b405edd8d3bcb2a5623194952a9581ac1c46cbc866f0764bdecfd90"
+  },
+  {
+    "path": "scripts/libra-ready-launch.py",
+    "sha256": "9e866aa6e9e60e974d4125fdbaa8ec9107ca1f72412ca56fc1bc3dbfd41ed3ea"
+  },
+  {
+    "path": "scripts/libra-stitch.py",
+    "sha256": "ace0b295157bb478f9459a24f5ebf85fac7486b41da617fd54f59ae67a0d6116"
+  },
+  {
+    "path": "scripts/libra_native_protocol.py",
+    "sha256": "2d0bb479a5014ea2a978b70b81943ce04494d01969c9263c0874b768902bf31e"
+  },
+  {
+    "path": "scripts/libra_token_admission.py",
+    "sha256": "165693efadd23dfdab604c1c159bc5dc03705d71931ab259e1904fd9f81ce8a7"
+  },
+  {
+    "path": "scripts/mai-data-ready.py",
+    "sha256": "ead2c1f01f8e0bbd2d8e893b7148054767490066b41d6f2b936c01faa0edde90"
+  },
+  {
+    "path": "scripts/mai-download.py",
+    "sha256": "0e7f792eeaff3e0a5de04a2c9f904536beeb9df0a943162d6e87d2ae21f5ef5a"
+  },
+  {
+    "path": "scripts/mai-extract.py",
+    "sha256": "8f2bcd4d96894ffa2466088e372dfb901b729088b69c91d1d66f801ef5533c74"
+  },
+  {
+    "path": "scripts/mai-extras.py",
+    "sha256": "1e3949b4b5e19d5bfa74015b8a5e333b4ca3430503f0df62511896318d5df797"
+  },
+  {
+    "path": "scripts/mai-kernel-check.py",
+    "sha256": "59cec66c2f8f7bef76318ffb9fa1229e3e9fde3b7e56a780527e722c2cd76f43"
+  },
+  {
+    "path": "scripts/mai-mirror.py",
+    "sha256": "85d9788195b5cfc865e0fb148c75e0c4090c4c8cb1ee5720f958960bc974aed0"
+  },
+  {
+    "path": "scripts/mai-monitor.py",
+    "sha256": "ae05fce6a0526fe23a10840c9b241a55da266090fd47e7d282e28d8a470439b1"
+  },
+  {
+    "path": "scripts/mai-pins.py",
+    "sha256": "8260316ace860a0219598078817b5e745243af630b8564ff29824038557fd42a"
+  },
+  {
+    "path": "scripts/mai-watch.py",
+    "sha256": "951b425099a850e23874d1fcd2b8a201f23fcac4dce64fcdd9f8cef67b41604b"
+  },
+  {
+    "path": "scripts/merge_eval_models.py",
+    "sha256": "37250c2d788e6e0643d83993182a224c77da2214e15d2e1eacc4013e715a74c9"
+  },
+  {
+    "path": "scripts/prepare_eval_runtime.py",
+    "sha256": "2ba8294d21996ccedac3f115c55146d81c499f4b845f53be66ff421f1167c5b6"
+  },
+  {
+    "path": "scripts/prepare_libra_training.py",
+    "sha256": "2b71323a19039af4d5cc7774e012b4c45f6b04d9ef886b2cd7548511bf86249f"
+  },
+  {
+    "path": "scripts/prepare_mai_fulltrain.py",
+    "sha256": "bb3144557c37386db608b9f1132e65abc32ee71c689cc499e1efb6e5bb601394"
+  },
+  {
+    "path": "scripts/prepare_natural_full.py",
+    "sha256": "e79a7c7b3aa16ba7f6632c949e35910ef08663c498476c382b470ddf43fe6b14"
+  },
+  {
+    "path": "scripts/prepare_official_sft.py",
+    "sha256": "05d6379de988f02f177a7d710648e334809209c78139346d3a51d2f506920061"
+  },
+  {
+    "path": "scripts/prepare_resume200.py",
+    "sha256": "eeb65cad3cf05d5b25e1ef177302e4435a4c7525a13373c0a4ba4d9a4d93cd20"
+  },
+  {
+    "path": "scripts/run_eval_queue.py",
+    "sha256": "93b314baf918984daf86041ad04e9aa094f1af756d684295c27e76855284366c"
+  },
+  {
+    "path": "scripts/run_vllm_eval.py",
+    "sha256": "388cdf3626dfefcff4bc38e0f108de930cc7820c8ceddb3ece5a28729f617324"
+  },
+  {
+    "path": "scripts/start_eval_when_ready.py",
+    "sha256": "d4acee53770bf7faa0842c43a90d2446b67f81d5138a0d58178e30834e5f30bf"
+  },
+  {
+    "path": "scripts/switch_eval_vllm.py",
+    "sha256": "71c2939c21ab959a2ac5888bd2b8a8532077073a3e8d4cce041b28ac7defaad0"
+  },
+  {
+    "path": "scripts/validate_and_launch_natural_full.py",
+    "sha256": "925122f62a726a67c07c282a985863c5d336d73a1bead8094ebdc8ba319370cf"
+  },
+  {
+    "path": "scripts/validate_eval_assets.py",
+    "sha256": "cb6be77f3c8a502ed1229056569708d50e6eb95ddd3986ed5bcac0f60db79dc0"
+  },
+  {
+    "path": "scripts/validate_launch_official_sft.py",
+    "sha256": "80ad86a9fbf0095e4832171ebd7efd6c9fc56aeda25b637b47bd7e77754bf788"
+  },
+  {
+    "path": "scripts/vllm_eval_client.py",
+    "sha256": "eb15de4998a3980c24fb8a983b89d12514d7f90a1a27a1ce427000cbf55dd365"
+  },
+  {
+    "path": "scripts/zero2_fulltrain_hook.py",
+    "sha256": "e150e6a71ed5e7125b8593e0883f3df4bda14a3244648aebd27818e9c335b7ec"
+  },
+  {
+    "path": "scripts/zero2_fulltrain_resume_hook.py",
+    "sha256": "9f03f9006748edcdfeef4a5d953316dfabeb93eede08e548d151d96fa03530dc"
+  },
+  {
+    "path": "step200-suite-20261118/queue.before-priority-change.py",
+    "sha256": "96c86b12926b26839063ca5f25c438c1569160973c9f2b3d71e0049200d9bd24"
+  },
+  {
+    "path": "step200-suite-20261118/queue.py",
+    "sha256": "ef7feaf0804a399475ccc675783de70104b34f2af1639be841517974616787b7"
+  },
+  {
+    "path": "evaluation/assets-20261113/grounding/client.py",
+    "sha256": "eb64c646e634f0fabc3466b840101af8b31248a4b44e6ebb44b7ade329df723e"
+  },
+  {
+    "path": "evaluation/assets-20261113/grounding/evaluation_protocol.py",
+    "sha256": "00a7c65b1c270b7c74f93026c9e5521cd164b83b459d39fb655dfa2ad8180de4"
+  },
+  {
+    "path": "evaluation/assets-20261113/grounding/native.py",
+    "sha256": "bf383b2664e1636a0a606d83a477c8b8d30fa4e20b8c44eca8a2d5be9d474d00"
+  },
+  {
+    "path": "evaluation/assets-20261113/grounding/native_protocol.py",
+    "sha256": "e8d4c1711b792b19bcbf8a39f83953b0e0323c588066ab142eebbc1de101055a"
+  },
+  {
+    "path": "evaluation/assets-20261113/grounding/official_eval.py",
+    "sha256": "f69e82c0f41e7a4637f416ed933a24bae73bf3b10cf76513c56bbd1d5be69991"
+  },
+  {
+    "path": "evaluation/assets-20261113/grounding/prompt.py",
+    "sha256": "6609e3e499958421a380cd2c07eab5f6ad06efa38270d75f7cbca99b0c51765f"
+  },
+  {
+    "path": "evaluation/assets-20261113/grounding/protocol.py",
+    "sha256": "ed17848ccb9b45af9c26d667798612cabce9a242dad63be5e9f20d319d9095aa"
+  },
+  {
+    "path": "evaluation/assets-20261113/mind2web/client.py",
+    "sha256": "f40b150593496bee2e797e108bf1992190e41311ce0d93a2ffa26482ba363f9e"
+  },
+  {
+    "path": "evaluation/assets-20261113/mind2web/native.py",
+    "sha256": "e0c0db2af27405960aa84eab276c159fcc7059fbadfcb8639e0567be20063ec8"
+  },
+  {
+    "path": "evaluation/assets-20261113/mind2web/native_protocol.py",
+    "sha256": "e8d4c1711b792b19bcbf8a39f83953b0e0323c588066ab142eebbc1de101055a"
+  },
+  {
+    "path": "evaluation/assets-20261113/mind2web/official_metrics.py",
+    "sha256": "a92fb494a253f852508f66e33cd04f330aae8ebd15892aaa34cb0b2c9c660d84"
+  },
+  {
+    "path": "evaluation/assets-20261113/mind2web/prompt.py",
+    "sha256": "6609e3e499958421a380cd2c07eab5f6ad06efa38270d75f7cbca99b0c51765f"
+  },
+  {
+    "path": "evaluation/assets-20261113/mind2web/upstream/eval_rl.py",
+    "sha256": "368e3af7132c4e77a839774470cb183b5ef1ab660d69ef362d39bafb06d232f6"
+  },
+  {
+    "path": "evaluation/assets-20261113/mind2web/upstream/get_answer_rl.sh",
+    "sha256": "ad9cf71a60d70986c896c65427bd7912084fe1a79116ba244c1e63dfd6d98772"
+  },
+  {
+    "path": "evaluation/assets-20261113/mind2web/upstream/guilibra_plan.py",
+    "sha256": "68c8571605332e2601e7ad0a4c4307abb059234982041f617a58a7c3c0ed0f00"
+  },
+  {
+    "path": "evaluation/assets-20261113/mind2web/upstream/plan_gen_guilibra.sh",
+    "sha256": "4fcb168b7293aa0cb56fabae2790ee7c9ba7fd89eaf99149c007b984b2ed8f8d"
+  },
+  {
+    "path": "evaluation/step200-suite-20261118/fm-visual/runtime/cosmos-gui/androidcontrol/fm-visual-step200/config.yaml",
+    "sha256": "497b01943bf7dc71db548bd0c695dff899eb9055113969fda26f5783f7473cba"
+  },
+  {
+    "path": "evaluation/step200-suite-20261118/fm-visual/runtime/cosmos-gui/androidcontrol/fm-visual-step200/job_env.yaml",
+    "sha256": "e8bc9688b786336a361a0ae6f6ea5e8cba3954339f16f8632f9fdac37fdd2f53"
+  },
+  {
+    "path": "evaluation/step200-suite-20261118/fm-visual/runtime/cosmos-gui/androidcontrol/fm-visual-step200/launch_info.yaml",
+    "sha256": "c54836f4998a6e601a2273b0b6d67c1cb111906ad100564d76e021c26b37a58d"
+  },
+  {
+    "path": "evaluation/step200-suite-20261118/mai400-fm-visual/runtime/cosmos-gui/androidcontrol/mai400-fm-visual/config.yaml",
+    "sha256": "ff83b2b204944a8796dbcf3d622415925b81dbf2ab4f04ca4fc12eda9152a8b6"
+  },
+  {
+    "path": "evaluation/step200-suite-20261118/mai400-fm-visual/runtime/cosmos-gui/androidcontrol/mai400-fm-visual/job_env.yaml",
+    "sha256": "2c97c887cdbf9fd680098bd27bbf47e4982c9fb542210921689af3a37342d2fc"
+  },
+  {
+    "path": "evaluation/step200-suite-20261118/mai400-fm-visual/runtime/cosmos-gui/androidcontrol/mai400-fm-visual/launch_info.yaml",
+    "sha256": "22a5014dc0fe39c820a18a5eebc224098ee1a30353280b9859b52b37edc46080"
+  },
+  {
+    "path": "libra-all-eval/step-000000/androidworld_eval.py",
+    "sha256": "e749586b7a46cc32d2c1fdb4bec19db70fa6c841cd2b9185917f8d1e321b6edd"
+  },
+  {
+    "path": "libra-all-eval/step-000000/androidworld_parallel.py",
+    "sha256": "cb28836208ec59672d33eb24b9493c5c959315f2b7abda43ade7dc5781639247"
+  },
+  {
+    "path": "libra-all-eval/step-000000/collect_androidworld.py",
+    "sha256": "8f9e173dc4f07209d6becdf9c1b52559005f7985ceecb96b21e8b112dcfe8a7f"
+  },
+  {
+    "path": "libra-all-eval/step-000000/collect_vllm_eval.py",
+    "sha256": "97c6fb7af05a8c14455a51ef843fe5ccb55fe20f3b3822a9deada0a2593b371d"
+  },
+  {
+    "path": "libra-all-eval/step-000000/libra_protocol.py",
+    "sha256": "65c47f087faa2c9530552305c2d2d166ec78e4771bcbbeab3cd8903b064f159d"
+  },
+  {
+    "path": "libra-all-eval/step-000000/merge_eval_models.py",
+    "sha256": "2be1ce8969da90b16fe8644f8e6bac54354043b9744e934333019a8fe393b361"
+  },
+  {
+    "path": "libra-all-eval/step-000000/run_vllm_eval.py",
+    "sha256": "8bda9e0b33431bec6c6c9034bf09fabe76cd23196c251c14365a4955ec2d4fda"
+  },
+  {
+    "path": "libra-all-eval/step-000000/vllm_eval_client.py",
+    "sha256": "a2b8646e61827e161bd67ff230f0cbeb93a624cfa8fb7ce2e7a92bf7cdfd6793"
+  },
+  {
+    "path": "libra-all-eval/step-000002/androidworld_eval.py",
+    "sha256": "5d09ed99ab912a7f4ca7cd7ff361933b78d4a59157163e761d5dc1f64d228d8d"
+  },
+  {
+    "path": "libra-all-eval/step-000002/androidworld_parallel.py",
+    "sha256": "db830629a6419346109515cbdef2ee0e24c224da6d6460c4edc0f4246919d7e7"
+  },
+  {
+    "path": "libra-all-eval/step-000002/collect_androidworld.py",
+    "sha256": "83951066738fd27ba7779df0b2525fb0447bc8bb9502b21e71ea8752509029f3"
+  },
+  {
+    "path": "libra-all-eval/step-000002/collect_vllm_eval.py",
+    "sha256": "9e742d2d7d7dbfabbec3994cdf48d9e6f628781cfd5e7e68569b33b137acd77c"
+  },
+  {
+    "path": "libra-all-eval/step-000002/libra_protocol.py",
+    "sha256": "65c47f087faa2c9530552305c2d2d166ec78e4771bcbbeab3cd8903b064f159d"
+  },
+  {
+    "path": "libra-all-eval/step-000002/merge_eval_models.py",
+    "sha256": "f074a998018aaaf92181b8bd66c59780094b3df8955d42504298f6717c387225"
+  },
+  {
+    "path": "libra-all-eval/step-000002/run_vllm_eval.py",
+    "sha256": "76a41809e6f44deaee1a17e343d56461a919c85659d5cfdcf8061dd5e2d623e4"
+  },
+  {
+    "path": "libra-all-eval/step-000002/vllm_eval_client.py",
+    "sha256": "3921f9e96f7d0609f7dbb36b070283744491333c44296696a315a070f99e0485"
+  },
+  {
+    "path": "libra-all-eval/step-000050/androidworld_eval.py",
+    "sha256": "ac317ba7fd825b8a30abec42104ca3e3b6291db38cb231df4aa3307d9c18b35f"
+  },
+  {
+    "path": "libra-all-eval/step-000050/androidworld_parallel.py",
+    "sha256": "353371780dc224d52a683b8310d7d13398d363e0cd374d5ff4592622bb7b9b96"
+  },
+  {
+    "path": "libra-all-eval/step-000050/collect_androidworld.py",
+    "sha256": "9dc553843c2b852be5df62f713a6d5e8a34e4eec5a8f0fb6d5f980d10ae7cf42"
+  },
+  {
+    "path": "libra-all-eval/step-000050/collect_vllm_eval.py",
+    "sha256": "f6e7c6aed6a63d82f0153eabf4bfe914a86ae1420b775f5d397cc11333a01118"
+  },
+  {
+    "path": "libra-all-eval/step-000050/libra_protocol.py",
+    "sha256": "65c47f087faa2c9530552305c2d2d166ec78e4771bcbbeab3cd8903b064f159d"
+  },
+  {
+    "path": "libra-all-eval/step-000050/merge_eval_models.py",
+    "sha256": "dfc93dc68153edb8fbbec28570a5b8ce357949021b5197508a52d66d385017af"
+  },
+  {
+    "path": "libra-all-eval/step-000050/run_vllm_eval.py",
+    "sha256": "82935ad20553b23ac4c00668cb247eb1ab0b331edb4a29d0b2942915b8dc8b16"
+  },
+  {
+    "path": "libra-all-eval/step-000050/vllm_eval_client.py",
+    "sha256": "760b9a1b23292adb3634a71e97b3d4f39a1dcca32cff654dbcd03426a20b1dd7"
+  },
+  {
+    "path": "libra-all-eval/step-000100/androidworld_eval.py",
+    "sha256": "235e84e7af6b4670ee68694e3daaf5738b487a95543c7808e170d73c42e4a746"
+  },
+  {
+    "path": "libra-all-eval/step-000100/androidworld_parallel.py",
+    "sha256": "1deada0bdaa96460a4d21d7675a640bbc7a411c3237dad9ed3b505af6efd2952"
+  },
+  {
+    "path": "libra-all-eval/step-000100/collect_androidworld.py",
+    "sha256": "37ae7993ff8b7476cb7393907154f1fae43da04469efff10a84a93902f28025f"
+  },
+  {
+    "path": "libra-all-eval/step-000100/collect_vllm_eval.py",
+    "sha256": "05e19de0cca9d2fc5588bbd27cc7b8c558f9cb6551fdb4517282c5afe1c1d33e"
+  },
+  {
+    "path": "libra-all-eval/step-000100/libra_protocol.py",
+    "sha256": "65c47f087faa2c9530552305c2d2d166ec78e4771bcbbeab3cd8903b064f159d"
+  },
+  {
+    "path": "libra-all-eval/step-000100/merge_eval_models.py",
+    "sha256": "1d9a5c406d15ab63d6b64a32289132ec2cebafc886e04bc0a2a5204529717686"
+  },
+  {
+    "path": "libra-all-eval/step-000100/run_vllm_eval.py",
+    "sha256": "94c8429993308cb2416b676502681deb35cf89ee7b1852dcb15a9876f2f3409d"
+  },
+  {
+    "path": "libra-all-eval/step-000100/vllm_eval_client.py",
+    "sha256": "a8024f633a21464ba1f04f2572fdc5a6cbc76fd387bd44c595ca4dc60cfd83d3"
+  },
+  {
+    "path": "libra-all-eval/step-000150/androidworld_eval.py",
+    "sha256": "8af2f3b1082e7509d2098b5b895581d7c94ad4407f188737c38229653a281757"
+  },
+  {
+    "path": "libra-all-eval/step-000150/androidworld_parallel.py",
+    "sha256": "d61d4c1982897c93efbe3c2749397545bc9bd4945ed5b2128db80a208e8cab5d"
+  },
+  {
+    "path": "libra-all-eval/step-000150/collect_androidworld.py",
+    "sha256": "fc515aebdc78fc7faecc333e381fe0ef4e1293acface2295e9c9d27d3be791d1"
+  },
+  {
+    "path": "libra-all-eval/step-000150/collect_vllm_eval.py",
+    "sha256": "79d97801956cf279605868f9a5f3fe84c42421b0b80de32fa756d31dc7529b66"
+  },
+  {
+    "path": "libra-all-eval/step-000150/libra_protocol.py",
+    "sha256": "65c47f087faa2c9530552305c2d2d166ec78e4771bcbbeab3cd8903b064f159d"
+  },
+  {
+    "path": "libra-all-eval/step-000150/merge_eval_models.py",
+    "sha256": "65c4ab3cf8c427a31f68eb6fda8699c220b0f02b621e61af821841ea8f165b75"
+  },
+  {
+    "path": "libra-all-eval/step-000150/run_vllm_eval.py",
+    "sha256": "a3edd79c1923504a00cef624646402187051c2b2c48c869e5dac40d090c33b00"
+  },
+  {
+    "path": "libra-all-eval/step-000150/vllm_eval_client.py",
+    "sha256": "89744e75ace50b2679399557c2340d96ba7bcf82153b3a8523b16c77f549e60e"
+  },
+  {
+    "path": "libra-fm2-eval50-150-20261118/aw150/androidworld_eval.py",
+    "sha256": "3dc8fda006017454be081f967c9f1afb20d1d00c54708215ce3ad519cb3f4c15"
+  },
+  {
+    "path": "libra-fm2-eval50-150-20261118/aw150/androidworld_parallel.py",
+    "sha256": "275bf0e9f47faee66c81ad7b50435182bf9b1521b8024750d85ef0e6fddaedc8"
+  },
+  {
+    "path": "libra-fm2-eval50-150-20261118/aw150/collect_androidworld.py",
+    "sha256": "47db58f1aff46abbdda9bfe518b1cd1132252fa3729bbdf8b364df0d654cbbe9"
+  },
+  {
+    "path": "libra-fm2-eval50-150-20261118/aw150/libra_protocol.py",
+    "sha256": "71e7a0bddc0e66dd18c61038d4c0778711c8efbd3fcba2c64fe2357b96c1e90e"
+  },
+  {
+    "path": "libra-fm2-eval50-150-20261118/aw50/androidworld_eval.py",
+    "sha256": "0743ff071a2ee518371c11b7e0cc80d702d1af3617e121c3ff8ad5f7c7de3c96"
+  },
+  {
+    "path": "libra-fm2-eval50-150-20261118/aw50/androidworld_parallel.py",
+    "sha256": "e5b6374eab507bcddf885fe77587eddfefd6b5cde8c1d97a8e5c32955e78e64f"
+  },
+  {
+    "path": "libra-fm2-eval50-150-20261118/aw50/collect_androidworld.py",
+    "sha256": "bb2581ffbd610f4af788bfa80b9f86f55ebee72b69be766637d5092a15624599"
+  },
+  {
+    "path": "libra-fm2-eval50-150-20261118/aw50/libra_protocol.py",
+    "sha256": "71e7a0bddc0e66dd18c61038d4c0778711c8efbd3fcba2c64fe2357b96c1e90e"
+  },
+  {
+    "path": "libra-fm2-eval50-150-20261118/mai200-repair/run.py",
+    "sha256": "0f60ef2bd8aa2a1f95c4cad43ae7ff5473df226e8923134fc16df75009d83137"
+  },
+  {
+    "path": "libra-fm2-eval50-150-20261118/offline/merge.py",
+    "sha256": "384b0ad186aec36d803340f559b8eaed81bc80cb17efcdd2dd860040f1e67a6c"
+  },
+  {
+    "path": "libra-fm2-eval50-150-20261118/offline/prompt_adapter.py",
+    "sha256": "ce5434dd596e9eb462a19473b40625e9a76dbc357f760c3888cc909ce25010d3"
+  },
+  {
+    "path": "libra-fm2-eval50-150-20261118/offline/templates.json",
+    "sha256": "a86b9a00fe94f78693fc015a2716723bbb37dd8386552163c82725f6d99c97a5"
+  },
+  {
+    "path": "libra-fm2-eval50-150-20261118/offline/web_client.py",
+    "sha256": "bb6d0c2da9c2b2e5017f5551c45b3405ae929c8d51196f28bace587c765e0a5a"
+  },
+  {
+    "path": "libra-fm2-eval50-150-20261118/offline/web_collect.py",
+    "sha256": "cde886088c66eb31fc083165c202ad11935d263a5e89402841e958823fa96607"
+  },
+  {
+    "path": "libra-fm2-eval50-150-20261118/offline/web_run.py",
+    "sha256": "143cd4944da4d8abc49f001420deef82350868b7fcab75f0121ec09127adb926"
+  },
+  {
+    "path": "step200-suite-20261118/fm-visual/entry.before-repair.py",
+    "sha256": "c88a2b452c2f7b7d477abd5253d931895718f7c531e1ea0765622181a3e3df01"
+  },
+  {
+    "path": "step200-suite-20261118/fm-visual/entry.py",
+    "sha256": "1480d2f3eb3a7ae24eb686c0db1f0b9144983d9e8f89ce6425c8fcd1387703b1"
+  },
+  {
+    "path": "step200-suite-20261118/fm-visual/fm_vis_hook.before-repair.py",
+    "sha256": "d3f2c8e5c43ec14c7aae270e66cfd42cbe0bb6eafe9db7b345fdbe54ac9563e7"
+  },
+  {
+    "path": "step200-suite-20261118/fm-visual/fm_vis_hook.py",
+    "sha256": "4022a8119f292b9fcfb2cf5d17b6dbf859291370720a1bf44044f3aa632d1baf"
+  },
+  {
+    "path": "step200-suite-20261118/fm-visual/launch.before-repair.py",
+    "sha256": "5df21ea4f7c4bf65f4835fcf11b219c9784ecf61c6a620ab238faf6eaf87e3f6"
+  },
+  {
+    "path": "step200-suite-20261118/fm-visual/launch.py",
+    "sha256": "bf0fea4fc90946c7e9be1bab06210b7eae161140fac9b524ca4cd31ee3bbc090"
+  },
+  {
+    "path": "step200-suite-20261118/fm-visual/vis_backend.py",
+    "sha256": "417806b30a7aabb0dabf3ddad28e53762b646cc7dc5ed4ce8ddbea5dbad039e6"
+  },
+  {
+    "path": "step200-suite-20261118/fm2-aw200/androidworld_eval.py",
+    "sha256": "51bb8c4a0b5e21c47fcb67e98579d50b3ea5065ace73921ebefb76e340f638b5"
+  },
+  {
+    "path": "step200-suite-20261118/fm2-aw200/androidworld_parallel.py",
+    "sha256": "68c23dfcb2ee2d44291b159d4f1ce759aeada498f339bb331c766db30a5969a5"
+  },
+  {
+    "path": "step200-suite-20261118/fm2-aw200/collect_androidworld.py",
+    "sha256": "268ca677592eb7f43b48b2550b61520e3b430bf0faac7f1c4ce496267551771a"
+  },
+  {
+    "path": "step200-suite-20261118/fm2-aw200/libra_protocol.py",
+    "sha256": "71e7a0bddc0e66dd18c61038d4c0778711c8efbd3fcba2c64fe2357b96c1e90e"
+  },
+  {
+    "path": "step200-suite-20261118/fm2-offline200/merge.py",
+    "sha256": "61fde7186f41f00eaede459fd9d488c6487838c80be5ed3792cc12e941488354"
+  },
+  {
+    "path": "step200-suite-20261118/fm2-offline200/prompt_adapter.py",
+    "sha256": "938a3b2967509b67a679ab6a937d4bffac189114ddca693b7f943f83b848361b"
+  },
+  {
+    "path": "step200-suite-20261118/fm2-offline200/templates.json",
+    "sha256": "a86b9a00fe94f78693fc015a2716723bbb37dd8386552163c82725f6d99c97a5"
+  },
+  {
+    "path": "step200-suite-20261118/fm2-offline200/web_client.py",
+    "sha256": "0b09955b7c2d059dd30c337630be4553e5752b30b62e410e97a5b3b01ca6a0e2"
+  },
+  {
+    "path": "step200-suite-20261118/fm2-offline200/web_collect.py",
+    "sha256": "ab079185274c705fbc425e74d39f7391becc50dcdc46d73092ea9faed9a485a4"
+  },
+  {
+    "path": "step200-suite-20261118/fm2-offline200/web_run.py",
+    "sha256": "bb4037877cd5ab300fd75a5e17548f2cfc27f035950abefdc45798d9f8863dab"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw0/androidworld_eval.py",
+    "sha256": "3032524d82bab5402feaea9d26db80e4c4ca749a1ea33360183fa8da01b17f2d"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw0/androidworld_parallel.py",
+    "sha256": "ea05ad0023660b3e79220b30de6093207da82999d5302f33ccfa973c5b9f6baf"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw0/androidworld_protocol_v2.py",
+    "sha256": "3340df36566abcc701cfad0435fcc24afbdddb4a1e620867ae525e2f60a82f2d"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw0/collect_androidworld.py",
+    "sha256": "2f31b177e96f74d15b67c21ccd35f51a0d71ddd1a5a97a5c2294a6c98213a102"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw0/libra_protocol.py",
+    "sha256": "71e7a0bddc0e66dd18c61038d4c0778711c8efbd3fcba2c64fe2357b96c1e90e"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw100/androidworld_eval.py",
+    "sha256": "4ea5955a35067200a1359d59648d32a6ae3f053d0a4c72ee847386ba123a15ca"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw100/androidworld_parallel.py",
+    "sha256": "568f033711d112562e2198357b27485b195df8d45212584a10d39ac0a03fe9fd"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw100/androidworld_protocol_v2.py",
+    "sha256": "3340df36566abcc701cfad0435fcc24afbdddb4a1e620867ae525e2f60a82f2d"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw100/collect_androidworld.py",
+    "sha256": "8516b46b50df0524115d9a11d097dfa748437a7c1806c7232c13f60434e4fb41"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw100/libra_protocol.py",
+    "sha256": "71e7a0bddc0e66dd18c61038d4c0778711c8efbd3fcba2c64fe2357b96c1e90e"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw150/androidworld_eval.py",
+    "sha256": "fa0a780030001dbfd2ef093e3329ebb0426868c13d15e01d722a78db98574413"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw150/androidworld_parallel.py",
+    "sha256": "177f3364c1f6b949a144dad3b31c7f25ab935eb4a4b1a8e1373a9783978b8e20"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw150/androidworld_protocol_v2.py",
+    "sha256": "3340df36566abcc701cfad0435fcc24afbdddb4a1e620867ae525e2f60a82f2d"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw150/collect_androidworld.py",
+    "sha256": "979680eb9d837a3ba8ab46e2326de6eeb254705a70a24225cdedba5ea679be4d"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw150/libra_protocol.py",
+    "sha256": "71e7a0bddc0e66dd18c61038d4c0778711c8efbd3fcba2c64fe2357b96c1e90e"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw2/androidworld_eval.py",
+    "sha256": "947d3674c4bf0708b158b0e13a976b6ecbf66dd58e3b40687dbe5e08b6f4004d"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw2/androidworld_parallel.py",
+    "sha256": "cbf574d02f3e183b6f23e20e3278d70afd7cd70ee8a44d028494bde500be7de5"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw2/androidworld_protocol_v2.py",
+    "sha256": "3340df36566abcc701cfad0435fcc24afbdddb4a1e620867ae525e2f60a82f2d"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw2/collect_androidworld.py",
+    "sha256": "43937dac1ae85e5b045e21ba9cfac70338d83a0c10711ba81bcdbb3f11e3b841"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw2/libra_protocol.py",
+    "sha256": "71e7a0bddc0e66dd18c61038d4c0778711c8efbd3fcba2c64fe2357b96c1e90e"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw200/androidworld_eval.py",
+    "sha256": "203e7654c40c13691bfcc87da56df8603573dbfc3d9c13dab7a354c1a632b3a9"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw200/androidworld_parallel.py",
+    "sha256": "fc4dcc58d11fc5deeffdf03427c5a7b275f46f2d872bce67f00688da5640303e"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw200/androidworld_protocol_v2.py",
+    "sha256": "3340df36566abcc701cfad0435fcc24afbdddb4a1e620867ae525e2f60a82f2d"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw200/collect_androidworld.py",
+    "sha256": "0e6a316ca3e77f7b46ad950b8f527f0539d55886b624bcb969005800e3dc178d"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw200/libra_protocol.py",
+    "sha256": "71e7a0bddc0e66dd18c61038d4c0778711c8efbd3fcba2c64fe2357b96c1e90e"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw250/androidworld_eval.py",
+    "sha256": "b3344126b0041e7f32500d37eb1545b41f240f98d28c8dbe470bb7b95d3732ad"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw250/androidworld_parallel.py",
+    "sha256": "50e07b767869fa417af31c6ff331e8094693f150f6e82063c52c994f0d58de79"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw250/androidworld_protocol_v2.py",
+    "sha256": "3340df36566abcc701cfad0435fcc24afbdddb4a1e620867ae525e2f60a82f2d"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw250/collect_androidworld.py",
+    "sha256": "1ad1609c514b6b8a5db8d7c3de27d165e36ce44d319b31a69e41a2266283ea9b"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw250/libra_protocol.py",
+    "sha256": "71e7a0bddc0e66dd18c61038d4c0778711c8efbd3fcba2c64fe2357b96c1e90e"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw300/androidworld_eval.py",
+    "sha256": "fa46967f824b97ea729d4db4c1067a5b2719721160cc35d602c8cc009e9f00c7"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw300/androidworld_parallel.py",
+    "sha256": "f755c7480883932b07a2f4dbc5fa10afe69fb89137c581ca011165c5b71be249"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw300/androidworld_protocol_v2.py",
+    "sha256": "3340df36566abcc701cfad0435fcc24afbdddb4a1e620867ae525e2f60a82f2d"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw300/collect_androidworld.py",
+    "sha256": "6fd9adf35e126ecbf65cece3a7c5e480e56972cf07a17082a1ca10f282c19758"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw300/libra_protocol.py",
+    "sha256": "71e7a0bddc0e66dd18c61038d4c0778711c8efbd3fcba2c64fe2357b96c1e90e"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw350/androidworld_eval.py",
+    "sha256": "6817233731e18d1ac814e694c67617fb1c022875314fdde2502f8fd6a22c1090"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw350/androidworld_parallel.py",
+    "sha256": "80bfe7c32f161549594d894777ee3df19fea653a118b43fecb15c1fe1edba2f7"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw350/androidworld_protocol_v2.py",
+    "sha256": "3340df36566abcc701cfad0435fcc24afbdddb4a1e620867ae525e2f60a82f2d"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw350/collect_androidworld.py",
+    "sha256": "4b4cade25785a8890a6edafc187773dc494beb1a549f6cafe6511fefdb30ec01"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw350/libra_protocol.py",
+    "sha256": "71e7a0bddc0e66dd18c61038d4c0778711c8efbd3fcba2c64fe2357b96c1e90e"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw400/androidworld_eval.py",
+    "sha256": "4c53b1d233419ba5bddc2d5fb106b28d8a185908b0229b4a33714b1f310cbda3"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw400/androidworld_parallel.py",
+    "sha256": "d2d0bf65d4345fb7b435776b59ddfc124bf251cfae919636260e83c313ee7e09"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw400/androidworld_protocol_v2.py",
+    "sha256": "3340df36566abcc701cfad0435fcc24afbdddb4a1e620867ae525e2f60a82f2d"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw400/collect_androidworld.py",
+    "sha256": "ca937b0d7c52f29798ac040ba8a4b6180eef8fd35d44690a33e1f9996b885c0a"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw400/libra_protocol.py",
+    "sha256": "71e7a0bddc0e66dd18c61038d4c0778711c8efbd3fcba2c64fe2357b96c1e90e"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw50/androidworld_eval.py",
+    "sha256": "8533468a5eb0690ed03f4b11d9ffe18c173496907d4c3aa864d7d4666f954de4"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw50/androidworld_parallel.py",
+    "sha256": "2b3925a849499a62909c518433b5d55eed607038e5f2e14b17da1ee3a11f68c7"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw50/androidworld_protocol_v2.py",
+    "sha256": "3340df36566abcc701cfad0435fcc24afbdddb4a1e620867ae525e2f60a82f2d"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw50/collect_androidworld.py",
+    "sha256": "03767f7ac87f4a4c442de564f704babf47976578546f5d1c1993b871ea0ed0d0"
+  },
+  {
+    "path": "step200-suite-20261118/mai-aw50/libra_protocol.py",
+    "sha256": "71e7a0bddc0e66dd18c61038d4c0778711c8efbd3fcba2c64fe2357b96c1e90e"
+  },
+  {
+    "path": "step200-suite-20261118/mai-offline2/collect_vllm_eval.py",
+    "sha256": "d4cd2cfc604657babac3d669d7a354ea621b935fa645421fd88fcce070c553e3"
+  },
+  {
+    "path": "step200-suite-20261118/mai-offline2/merge_eval_models.py",
+    "sha256": "adbddef5a6f83e04cbebcc33bbb5a5282b3fb25708088c44d1cdfc4f3165c243"
+  },
+  {
+    "path": "step200-suite-20261118/mai-offline2/run_vllm_eval.py",
+    "sha256": "5a844cc47381fc2c8cf7ff276d0afad4b77187ef6eb970bd7aa8c65d57bc607e"
+  },
+  {
+    "path": "step200-suite-20261118/mai-offline2/vllm_eval_client.py",
+    "sha256": "7c999185b177e303eb5bbea51017e03b4b9179dcf0275872e4d60c049fd7c8e1"
+  },
+  {
+    "path": "step200-suite-20261118/mai400-fm-visual/build_gallery.py",
+    "sha256": "a17b574806b8f4845c60527b17fff7296a10da087e3228ef7a62207398167c95"
+  },
+  {
+    "path": "step200-suite-20261118/mai400-fm-visual/entry.py",
+    "sha256": "647db58f9b1f16acebeb97c4a78db8357bb37f101aa1957a9b989daccc7571fe"
+  },
+  {
+    "path": "step200-suite-20261118/mai400-fm-visual/fm_vis_hook.py",
+    "sha256": "526d8aecb93a550a83f76953fdb2ed6c835b57ce8eb685d79d46181ff612908b"
+  },
+  {
+    "path": "step200-suite-20261118/mai400-fm-visual/launch.py",
+    "sha256": "0b6ea7fa752cb02253cef4ee169adb7d5ac5e49458dc4352c067968eac1dafb5"
+  },
+  {
+    "path": "step200-suite-20261118/mai400-fm-visual/vis_backend.py",
+    "sha256": "562b444ec575e8e5e560072cf0aaef6d63bce9dc1ba0e4ddac7cd62a1deee3db"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-20261116/check_training.py",
+    "sha256": "7f87012d4afe6a7fe1fe780838d116786bbb9a899abda8ee32ab562d622aa681"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-20261116/config.json",
+    "sha256": "d2d842b62d0b3a2bc5ea8bc6b2177420a4f1b808786bb1a8a69255ffa42278ff"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-20261116/fresh_timing.py",
+    "sha256": "b974509d20f73fe3aa33d0623fc74d4b57c4b58eb312643ad6b13bb31cfd4724"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-20261116/launch.py",
+    "sha256": "896cb198cf2712ad0465a1c551f060b89f3787dee443569205793a92d0c213c7"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-20261116/mixed_native_sample.py",
+    "sha256": "3bac9a065c83fb0bce1c31d4df34029aa49a8f8a28a44d06a8558b25e89631d5"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-20261116/mixed_native_targets.py",
+    "sha256": "71acf103beb7aed493530bd2bd3a310eb19dedeec7432de848302f2c7e89c23d"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-20261116/mixed_prompt.py",
+    "sha256": "d0204b81aec9c9d8fa5295b7a8f1d35ccd4f50ab3db7d24475eb068ffbe58554"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-20261116/native.toml",
+    "sha256": "6ed8114733683e92aa064c4c0da2247a9a8c9370b2917fb56a6acf49e5c69d0d"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-20261116/native_protocol.py",
+    "sha256": "ce2aef320ea33e965091f06447c6955c40f9f144a4a9e2bf69060a69f4d0e535"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-20261116/patch_training.py",
+    "sha256": "2cde3c5dd07a497b783a37f06f217ba1c7f08cf2dbad071612c6cf372f6ce172"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-20261116/prepare_repro.py",
+    "sha256": "696060c8b387e74ed5a8330fbc93c8b73139a41e002ca5fad2f316c60320adde"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-20261116/templates.json",
+    "sha256": "a86b9a00fe94f78693fc015a2716723bbb37dd8386552163c82725f6d99c97a5"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-20261116/TRAINING-NOTES.md",
+    "sha256": "7bc7552c58df54a6f4c4856bb1c3a0e6e9dcccd4a04ccf88904424de620f9e2a"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-20261116/training-plan.json",
+    "sha256": "e8ac234102af41108e17ae28a195c9ed91216b841fb08a313493e453a75f76b8"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-20261116/training_backend.py",
+    "sha256": "922733688e4fccc34c5f79eca1f79d6beaea50af614baed50f55d1050dcbfc67"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-20261116/train_entry.py",
+    "sha256": "92dfa8bbd8a61e31247721e60521655ed6e7065c472bc5488b4184bc7f14c56d"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-20261116/validate_processor.py",
+    "sha256": "7dc0a2c431b4c83f5fb486da019cd282dd7714288905f52eccced6822a0cd6f6"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-20261116/zero2_hook.py",
+    "sha256": "9f03f9006748edcdfeef4a5d953316dfabeb93eede08e548d151d96fa03530dc"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-20261116/zero2_micro2_adapter.py",
+    "sha256": "6cf79d3e2b1f003b1d8ce4249f8729282ca0a0a839f826d13c9f0a2e605cf650"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-ceonly-20261118/config.json",
+    "sha256": "0aafd8d4d0725291b9659d16b2c63c77758647a498ddc4309db17823cd279794"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-ceonly-20261118/generated-loss.py",
+    "sha256": "73f5e012edc26d557094dcff070e0476c5356c209611b679b3b661a47ac8a5bf"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-ceonly-20261118/launch.py",
+    "sha256": "fd78cfb42f9ae15d9d242c3fbce26ca906129b155396fbf98a308ec85d510d84"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-ceonly-20261118/mixed_native_sample.py",
+    "sha256": "3bac9a065c83fb0bce1c31d4df34029aa49a8f8a28a44d06a8558b25e89631d5"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-ceonly-20261118/mixed_native_targets.py",
+    "sha256": "71acf103beb7aed493530bd2bd3a310eb19dedeec7432de848302f2c7e89c23d"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-ceonly-20261118/mixed_prompt.py",
+    "sha256": "d0204b81aec9c9d8fa5295b7a8f1d35ccd4f50ab3db7d24475eb068ffbe58554"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-ceonly-20261118/native.toml",
+    "sha256": "6ed8114733683e92aa064c4c0da2247a9a8c9370b2917fb56a6acf49e5c69d0d"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-ceonly-20261118/native_protocol.py",
+    "sha256": "ce2aef320ea33e965091f06447c6955c40f9f144a4a9e2bf69060a69f4d0e535"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-ceonly-20261118/patch_training.py",
+    "sha256": "2cde3c5dd07a497b783a37f06f217ba1c7f08cf2dbad071612c6cf372f6ce172"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-ceonly-20261118/templates.json",
+    "sha256": "a86b9a00fe94f78693fc015a2716723bbb37dd8386552163c82725f6d99c97a5"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-ceonly-20261118/training-plan.json",
+    "sha256": "f30c415cfd0be56b26ba071f07e964c746f2188f5971adffe7c15e114016d522"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-ceonly-20261118/training_backend.py",
+    "sha256": "fbdcfdd92991b4836dc79e34a82f69a94d0d69ac620fde01383475fd4911fc93"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-ceonly-20261118/train_entry.py",
+    "sha256": "ce00181398a9c8e54e840a9b808bf1dddac29f46bb1eaed5126179480cbf60aa"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-ceonly-20261118/validate_launch.py",
+    "sha256": "051792cebe19b9d9991f6ddee62d4d24e4784e147f956074859f8d3a9597f376"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-ceonly-20261118/validate_processor.py",
+    "sha256": "e34af61872bf73f5239ff63baff695801a10b06455a2ee8e024903b254674428"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-ceonly-20261118/zero2_hook.py",
+    "sha256": "eba4ad6e6eb9324fbe7c0befd9b07fad1ab03899c555db2fabf85b4ddfe3a58e"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-ceonly-20261118/zero2_micro2_adapter.py",
+    "sha256": "6cf79d3e2b1f003b1d8ce4249f8729282ca0a0a839f826d13c9f0a2e605cf650"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-fm2-20261117/config.json",
+    "sha256": "593b0df8e2e8ccb0da3144deeabe8431a0aeafe79418627b9b01dbd06d7d049e"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-fm2-20261117/generated-loss.py",
+    "sha256": "9b0976bde678fb5bcf0a8d81b0340481b5ea43b06ae413ce4982fbbf03b3fb42"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-fm2-20261117/launch.py",
+    "sha256": "48a05b2139b28e4c3671c7a8b00f454aefd15e220484ea0e644b1f120fcb5321"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-fm2-20261117/mixed_native_sample.py",
+    "sha256": "3bac9a065c83fb0bce1c31d4df34029aa49a8f8a28a44d06a8558b25e89631d5"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-fm2-20261117/mixed_native_targets.py",
+    "sha256": "71acf103beb7aed493530bd2bd3a310eb19dedeec7432de848302f2c7e89c23d"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-fm2-20261117/mixed_prompt.py",
+    "sha256": "d0204b81aec9c9d8fa5295b7a8f1d35ccd4f50ab3db7d24475eb068ffbe58554"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-fm2-20261117/native.toml",
+    "sha256": "6ed8114733683e92aa064c4c0da2247a9a8c9370b2917fb56a6acf49e5c69d0d"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-fm2-20261117/native_protocol.py",
+    "sha256": "ce2aef320ea33e965091f06447c6955c40f9f144a4a9e2bf69060a69f4d0e535"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-fm2-20261117/patch_training.py",
+    "sha256": "2cde3c5dd07a497b783a37f06f217ba1c7f08cf2dbad071612c6cf372f6ce172"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-fm2-20261117/templates.json",
+    "sha256": "a86b9a00fe94f78693fc015a2716723bbb37dd8386552163c82725f6d99c97a5"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-fm2-20261117/training-plan.json",
+    "sha256": "2fc19baa4cdfb9149a5bd5309f8aef81330af84fad4bfec8cbb57712245801e9"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-fm2-20261117/training_backend.py",
+    "sha256": "91e2eff5c39764bcaa3853e56bf01462b02f7fa05e9354854a95b24608417456"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-fm2-20261117/train_entry.py",
+    "sha256": "92dfa8bbd8a61e31247721e60521655ed6e7065c472bc5488b4184bc7f14c56d"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-fm2-20261117/validate_launch.py",
+    "sha256": "22a86363aff8f5957e452e66cfc9f88889c917afa858b29b817c56724a0ab358"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-fm2-20261117/validate_processor.py",
+    "sha256": "89e62b19cd8e1a61f4b75df437de3469c271160d2848c23431896ed98a122b26"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-fm2-20261117/zero2_hook.py",
+    "sha256": "9f03f9006748edcdfeef4a5d953316dfabeb93eede08e548d151d96fa03530dc"
+  },
+  {
+    "path": "training/gui-libra-awhigh-aclow-fm2-20261117/zero2_micro2_adapter.py",
+    "sha256": "6cf79d3e2b1f003b1d8ce4249f8729282ca0a0a839f826d13c9f0a2e605cf650"
+  },
+  {
+    "path": "training/gui-libra-natural-history-20261117/config.json",
+    "sha256": "7f8b2712a4c5dabfbf00419558ef59e8f4e75e0b8a57a680a279dfa15d21c9a8"
+  },
+  {
+    "path": "training/gui-libra-natural-history-20261117/launch.py",
+    "sha256": "eb23fb182d55d610069f8e680f71fc0b034038c289fd8b27517a1afdab64efbe"
+  },
+  {
+    "path": "training/gui-libra-natural-history-20261117/mixed_native_sample.py",
+    "sha256": "3bac9a065c83fb0bce1c31d4df34029aa49a8f8a28a44d06a8558b25e89631d5"
+  },
+  {
+    "path": "training/gui-libra-natural-history-20261117/mixed_native_targets.py",
+    "sha256": "71acf103beb7aed493530bd2bd3a310eb19dedeec7432de848302f2c7e89c23d"
+  },
+  {
+    "path": "training/gui-libra-natural-history-20261117/mixed_prompt.py",
+    "sha256": "d0204b81aec9c9d8fa5295b7a8f1d35ccd4f50ab3db7d24475eb068ffbe58554"
+  },
+  {
+    "path": "training/gui-libra-natural-history-20261117/native.toml",
+    "sha256": "6ed8114733683e92aa064c4c0da2247a9a8c9370b2917fb56a6acf49e5c69d0d"
+  },
+  {
+    "path": "training/gui-libra-natural-history-20261117/native_protocol.py",
+    "sha256": "ce2aef320ea33e965091f06447c6955c40f9f144a4a9e2bf69060a69f4d0e535"
+  },
+  {
+    "path": "training/gui-libra-natural-history-20261117/patch_training.py",
+    "sha256": "2cde3c5dd07a497b783a37f06f217ba1c7f08cf2dbad071612c6cf372f6ce172"
+  },
+  {
+    "path": "training/gui-libra-natural-history-20261117/templates.json",
+    "sha256": "8b273c755634bf7e2e03ec5744ab9f4a6dd817c5a9520bab2811793c34fbd9ee"
+  },
+  {
+    "path": "training/gui-libra-natural-history-20261117/training-plan.json",
+    "sha256": "23f6abe00e0626a60e5accdfa3092ffd6b15fecffb90c06bd8eca20bee88c4fe"
+  },
+  {
+    "path": "training/gui-libra-natural-history-20261117/training_backend.py",
+    "sha256": "922733688e4fccc34c5f79eca1f79d6beaea50af614baed50f55d1050dcbfc67"
+  },
+  {
+    "path": "training/gui-libra-natural-history-20261117/train_entry.py",
+    "sha256": "92dfa8bbd8a61e31247721e60521655ed6e7065c472bc5488b4184bc7f14c56d"
+  },
+  {
+    "path": "training/gui-libra-natural-history-20261117/validate_processor.py",
+    "sha256": "eff5bf22521df370a7a45f21e85b865be14aeee1311d16783508a19e225ab368"
+  },
+  {
+    "path": "training/gui-libra-natural-history-20261117/zero2_hook.py",
+    "sha256": "9f03f9006748edcdfeef4a5d953316dfabeb93eede08e548d151d96fa03530dc"
+  },
+  {
+    "path": "training/gui-libra-natural-history-20261117/zero2_micro2_adapter.py",
+    "sha256": "6cf79d3e2b1f003b1d8ce4249f8729282ca0a0a839f826d13c9f0a2e605cf650"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/config.json",
+    "sha256": "8fba5b894f6c08c88f000d994f004687dcb8bce9f941246e0c4ed95feb2be5da"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/launch.py",
+    "sha256": "acedba078d1536b25b1bc49543d9b82ea4d4bbd15dfd683318e39046a3420882"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/mixed_native_sample.py",
+    "sha256": "3bac9a065c83fb0bce1c31d4df34029aa49a8f8a28a44d06a8558b25e89631d5"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/mixed_native_targets.py",
+    "sha256": "71acf103beb7aed493530bd2bd3a310eb19dedeec7432de848302f2c7e89c23d"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/mixed_prompt.py",
+    "sha256": "d0204b81aec9c9d8fa5295b7a8f1d35ccd4f50ab3db7d24475eb068ffbe58554"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/native.toml",
+    "sha256": "35eb3b4f24114639506673358bb6adc43f6821cf33c85b15068930611cb796df"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/native_protocol.py",
+    "sha256": "ce2aef320ea33e965091f06447c6955c40f9f144a4a9e2bf69060a69f4d0e535"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/patch_training.py",
+    "sha256": "2cde3c5dd07a497b783a37f06f217ba1c7f08cf2dbad071612c6cf372f6ce172"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/templates.json",
+    "sha256": "8b273c755634bf7e2e03ec5744ab9f4a6dd817c5a9520bab2811793c34fbd9ee"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/training-plan.json",
+    "sha256": "c4cf02a9034be00750be624e1c0b8ddcd8b87dd9f99545b12392b4f124586fa6"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/training_backend.py",
+    "sha256": "0c7781f7041295c9d8c6837dd980ba06cc82c7c3ae621a8e5e1e8aeac053cec7"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/train_entry.py",
+    "sha256": "92dfa8bbd8a61e31247721e60521655ed6e7065c472bc5488b4184bc7f14c56d"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/validate_processor.py",
+    "sha256": "50e100d207ad78b05d42572c47ce4472e0fbc9adc17cbbbc6bc6a65fd050847e"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/zero2_hook.py",
+    "sha256": "9f03f9006748edcdfeef4a5d953316dfabeb93eede08e548d151d96fa03530dc"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/zero2_micro2_adapter.py",
+    "sha256": "6cf79d3e2b1f003b1d8ce4249f8729282ca0a0a839f826d13c9f0a2e605cf650"
+  },
+  {
+    "path": "training/gui-libra-official-sft-20261117/config.json",
+    "sha256": "bc9f5f280afb8f847d4b0bdff19911624a5d14c6b755eb8ec8534689d8cd5b42"
+  },
+  {
+    "path": "training/gui-libra-official-sft-20261117/launch.py",
+    "sha256": "9a42b10e25ec150e344708e1c1ab71b2cb6e9d2b46a7a460b2ce1d8293f293de"
+  },
+  {
+    "path": "training/gui-libra-official-sft-20261117/mixed_native_sample.py",
+    "sha256": "f6d0c910c39d9469aae9e715de90987354cd881f89b08cfa27090498872c6500"
+  },
+  {
+    "path": "training/gui-libra-official-sft-20261117/mixed_native_targets.py",
+    "sha256": "71acf103beb7aed493530bd2bd3a310eb19dedeec7432de848302f2c7e89c23d"
+  },
+  {
+    "path": "training/gui-libra-official-sft-20261117/mixed_prompt.py",
+    "sha256": "d0204b81aec9c9d8fa5295b7a8f1d35ccd4f50ab3db7d24475eb068ffbe58554"
+  },
+  {
+    "path": "training/gui-libra-official-sft-20261117/native.toml",
+    "sha256": "35eb3b4f24114639506673358bb6adc43f6821cf33c85b15068930611cb796df"
+  },
+  {
+    "path": "training/gui-libra-official-sft-20261117/native_protocol.py",
+    "sha256": "973fa2ec94208619e7466a6b7b48312b1f6455d22b9a43e63b06d3ffb04ff32e"
+  },
+  {
+    "path": "training/gui-libra-official-sft-20261117/patch_training.py",
+    "sha256": "05add3105fb01cf85fae56d5b4ac02476786d8ea4dac73e656b4f86687c543e5"
+  },
+  {
+    "path": "training/gui-libra-official-sft-20261117/training-plan.json",
+    "sha256": "9608fe229fe56d8f7dd904f3ab4545fd41d44b1c7c6ebb13e5d12a8fb76bec6c"
+  },
+  {
+    "path": "training/gui-libra-official-sft-20261117/training_backend.py",
+    "sha256": "1e65c75f5c8edef04c198aba7e32fa4f882f9cee47924275778c52b31312d20a"
+  },
+  {
+    "path": "training/gui-libra-official-sft-20261117/train_entry.py",
+    "sha256": "92dfa8bbd8a61e31247721e60521655ed6e7065c472bc5488b4184bc7f14c56d"
+  },
+  {
+    "path": "training/gui-libra-official-sft-20261117/validate_processor.py",
+    "sha256": "093528632acba749102e91df56e9e28fb843bdd10f6b971a726b233c4d4ac593"
+  },
+  {
+    "path": "training/gui-libra-official-sft-20261117/zero2_hook.py",
+    "sha256": "9f03f9006748edcdfeef4a5d953316dfabeb93eede08e548d151d96fa03530dc"
+  },
+  {
+    "path": "training/gui-libra-official-sft-20261117/zero2_micro2_adapter.py",
+    "sha256": "6cf79d3e2b1f003b1d8ce4249f8729282ca0a0a839f826d13c9f0a2e605cf650"
+  },
+  {
+    "path": "training/gui-libra-zero2-mlp-strict10k-20261114/check_training.py",
+    "sha256": "0d8ba08683b6095042e298a72cf31cd585086776ded7c704cdc4113d8b6e7ee1"
+  },
+  {
+    "path": "training/gui-libra-zero2-mlp-strict10k-20261114/config.json",
+    "sha256": "117fece63e449000daa8443351d343c1b0327c76b55540690b14bdc93f44966d"
+  },
+  {
+    "path": "training/gui-libra-zero2-mlp-strict10k-20261114/fresh_timing.py",
+    "sha256": "b974509d20f73fe3aa33d0623fc74d4b57c4b58eb312643ad6b13bb31cfd4724"
+  },
+  {
+    "path": "training/gui-libra-zero2-mlp-strict10k-20261114/mixed_native_sample.py",
+    "sha256": "8d00591d59903b87cdc29eade5a4391f11368593ad89352dbbea0763c6cb404f"
+  },
+  {
+    "path": "training/gui-libra-zero2-mlp-strict10k-20261114/mixed_native_targets.py",
+    "sha256": "71acf103beb7aed493530bd2bd3a310eb19dedeec7432de848302f2c7e89c23d"
+  },
+  {
+    "path": "training/gui-libra-zero2-mlp-strict10k-20261114/mixed_prompt.py",
+    "sha256": "d0204b81aec9c9d8fa5295b7a8f1d35ccd4f50ab3db7d24475eb068ffbe58554"
+  },
+  {
+    "path": "training/gui-libra-zero2-mlp-strict10k-20261114/native.toml",
+    "sha256": "6ed8114733683e92aa064c4c0da2247a9a8c9370b2917fb56a6acf49e5c69d0d"
+  },
+  {
+    "path": "training/gui-libra-zero2-mlp-strict10k-20261114/native_protocol.py",
+    "sha256": "2bce14c3f0b0c6505483a17df67ec3189f08fae9b360d47f8508081b96b56fb1"
+  },
+  {
+    "path": "training/gui-libra-zero2-mlp-strict10k-20261114/patch_training.py",
+    "sha256": "a5cfe9ad62e52e997425cd54b427f28fa89f185436ba2127f2b7f6a23b51b944"
+  },
+  {
+    "path": "training/gui-libra-zero2-mlp-strict10k-20261114/training-plan.json",
+    "sha256": "e70bd8b15b3dced44b5cc443bb33eb8d0e8972b02beafd4362a4f59e919dd657"
+  },
+  {
+    "path": "training/gui-libra-zero2-mlp-strict10k-20261114/training_backend.py",
+    "sha256": "b51610a53260b432d7737ed1757dbbabe2122f9363b5bac740a9f15239782055"
+  },
+  {
+    "path": "training/gui-libra-zero2-mlp-strict10k-20261114/train_entry.py",
+    "sha256": "92dfa8bbd8a61e31247721e60521655ed6e7065c472bc5488b4184bc7f14c56d"
+  },
+  {
+    "path": "training/gui-libra-zero2-mlp-strict10k-20261114/zero2_hook.py",
+    "sha256": "9f03f9006748edcdfeef4a5d953316dfabeb93eede08e548d151d96fa03530dc"
+  },
+  {
+    "path": "training/gui-libra-zero2-mlp-strict10k-20261114/zero2_micro2_adapter.py",
+    "sha256": "6cf79d3e2b1f003b1d8ce4249f8729282ca0a0a839f826d13c9f0a2e605cf650"
+  },
+  {
+    "path": "training/mai-ui-vlm-ce-20261119/config.json",
+    "sha256": "2f3d1f7e957100774b6ae7c3a879dda72eedd797b7381a237cd5e07107cb0ae4"
+  },
+  {
+    "path": "training/mai-ui-vlm-ce-20261119/launch.py",
+    "sha256": "08d9c001174128029b15c4e663e40ae14faabdbdc6fb3e2a5d8907fab08a035a"
+  },
+  {
+    "path": "training/mai-ui-vlm-ce-20261119/mixed_native_targets.py",
+    "sha256": "71acf103beb7aed493530bd2bd3a310eb19dedeec7432de848302f2c7e89c23d"
+  },
+  {
+    "path": "training/mai-ui-vlm-ce-20261119/native_protocol.py",
+    "sha256": "ce2aef320ea33e965091f06447c6955c40f9f144a4a9e2bf69060a69f4d0e535"
+  },
+  {
+    "path": "training/mai-ui-vlm-ce-20261119/templates.json",
+    "sha256": "a86b9a00fe94f78693fc015a2716723bbb37dd8386552163c82725f6d99c97a5"
+  },
+  {
+    "path": "training/mai-ui-vlm-ce-20261119/train.py",
+    "sha256": "b5c6f2b5286121d7481ea5d05707dcdc4b8d57c95bdf839934e9dd6ee9374a73"
+  },
+  {
+    "path": "training/mai-ui-zero2-mlp-strict10k-20261113/check_training.py",
+    "sha256": "645a55a88bad1cb5167a54007d01cf2b80a10f961ec55e48caf1d15e1bdfee96"
+  },
+  {
+    "path": "training/mai-ui-zero2-mlp-strict10k-20261113/config.json",
+    "sha256": "294598aac928d2b7b3a1971f7db92de9f2ab5c026daf8441ab30cfaeba103c52"
+  },
+  {
+    "path": "training/mai-ui-zero2-mlp-strict10k-20261113/fresh_timing.py",
+    "sha256": "b974509d20f73fe3aa33d0623fc74d4b57c4b58eb312643ad6b13bb31cfd4724"
+  },
+  {
+    "path": "training/mai-ui-zero2-mlp-strict10k-20261113/mixed_native_sample.py",
+    "sha256": "fef0eefdcce8ed0b55830719211e9b7e5b5d2587df6f7db24a70de6a3be6d0b0"
+  },
+  {
+    "path": "training/mai-ui-zero2-mlp-strict10k-20261113/mixed_native_targets.py",
+    "sha256": "71acf103beb7aed493530bd2bd3a310eb19dedeec7432de848302f2c7e89c23d"
+  },
+  {
+    "path": "training/mai-ui-zero2-mlp-strict10k-20261113/mixed_prompt.py",
+    "sha256": "d0204b81aec9c9d8fa5295b7a8f1d35ccd4f50ab3db7d24475eb068ffbe58554"
+  },
+  {
+    "path": "training/mai-ui-zero2-mlp-strict10k-20261113/native.toml",
+    "sha256": "6ed8114733683e92aa064c4c0da2247a9a8c9370b2917fb56a6acf49e5c69d0d"
+  },
+  {
+    "path": "training/mai-ui-zero2-mlp-strict10k-20261113/native_protocol.py",
+    "sha256": "e8f5498e29643143b8b698747cc22cfc351755f3fd560a949eebaa9e1a60fdb0"
+  },
+  {
+    "path": "training/mai-ui-zero2-mlp-strict10k-20261113/patch_training.py",
+    "sha256": "16dd5e9c0ca506d51953ae07ce777dca4e0ec6f7e6a68de2ed25f7ff34fcd238"
+  },
+  {
+    "path": "training/mai-ui-zero2-mlp-strict10k-20261113/pause_at_200.py",
+    "sha256": "7f333874de9ada50668c4a7f9406b591307a7e3c02e13a1015eb12a5ea478349"
+  },
+  {
+    "path": "training/mai-ui-zero2-mlp-strict10k-20261113/training-plan.json",
+    "sha256": "304cb3ceea2b125bf659f41f3434c612bfacb68f5657ff87266a77ca8e14e094"
+  },
+  {
+    "path": "training/mai-ui-zero2-mlp-strict10k-20261113/training_backend.py",
+    "sha256": "d0e5fe005cf0fb21490e4bf05a30a03718e5a8029daa64c1de4bffd15a790df2"
+  },
+  {
+    "path": "training/mai-ui-zero2-mlp-strict10k-20261113/train_entry.py",
+    "sha256": "0dc8f16428321e43e68c7d2b503974787f94a1e8d0129b6012b38027d5da5dfa"
+  },
+  {
+    "path": "training/mai-ui-zero2-mlp-strict10k-20261113/zero2_hook.before-resume200.py",
+    "sha256": "e150e6a71ed5e7125b8593e0883f3df4bda14a3244648aebd27818e9c335b7ec"
+  },
+  {
+    "path": "training/mai-ui-zero2-mlp-strict10k-20261113/zero2_hook.py",
+    "sha256": "9f03f9006748edcdfeef4a5d953316dfabeb93eede08e548d151d96fa03530dc"
+  },
+  {
+    "path": "training/mai-ui-zero2-mlp-strict10k-20261113/zero2_micro2_adapter.py",
+    "sha256": "6cf79d3e2b1f003b1d8ce4249f8729282ca0a0a839f826d13c9f0a2e605cf650"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/longest-smoke/config.json",
+    "sha256": "ca7bb964da00386d0f87f7c4523243b85ee635545a2afe487b3dae385084a102"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/longest-smoke/launch.py",
+    "sha256": "1e6ff1ede3213cd0e6b23ce6088dc7443009ce5b38538bf6122f0320463db857"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/longest-smoke/mixed_native_sample.py",
+    "sha256": "3bac9a065c83fb0bce1c31d4df34029aa49a8f8a28a44d06a8558b25e89631d5"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/longest-smoke/mixed_native_targets.py",
+    "sha256": "71acf103beb7aed493530bd2bd3a310eb19dedeec7432de848302f2c7e89c23d"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/longest-smoke/mixed_prompt.py",
+    "sha256": "d0204b81aec9c9d8fa5295b7a8f1d35ccd4f50ab3db7d24475eb068ffbe58554"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/longest-smoke/native.toml",
+    "sha256": "aaa315e3d72bd51919d643e04e25088930b59faed8067baf86b09a4f9e75e237"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/longest-smoke/native_protocol.py",
+    "sha256": "ce2aef320ea33e965091f06447c6955c40f9f144a4a9e2bf69060a69f4d0e535"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/longest-smoke/patch_training.py",
+    "sha256": "2cde3c5dd07a497b783a37f06f217ba1c7f08cf2dbad071612c6cf372f6ce172"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/longest-smoke/templates.json",
+    "sha256": "8b273c755634bf7e2e03ec5744ab9f4a6dd817c5a9520bab2811793c34fbd9ee"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/longest-smoke/training-plan.json",
+    "sha256": "922786e452919bbe603acfaf127e67afa0445c10687fd66a7b61193b69370f33"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/longest-smoke/training_backend.py",
+    "sha256": "0c7781f7041295c9d8c6837dd980ba06cc82c7c3ae621a8e5e1e8aeac053cec7"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/longest-smoke/train_entry.py",
+    "sha256": "92dfa8bbd8a61e31247721e60521655ed6e7065c472bc5488b4184bc7f14c56d"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/longest-smoke/validate_processor.py",
+    "sha256": "2b4e0a0be1de4e5e43986b0d69f997a0a391dda6da9d4634425ec4606ae3c88e"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/longest-smoke/zero2_hook.py",
+    "sha256": "dd8137c4df3b036180480ea47fac44d67e515d6d071d5d5410528734e06f860a"
+  },
+  {
+    "path": "training/gui-libra-natural-history-full-20261117/longest-smoke/zero2_micro2_adapter.py",
+    "sha256": "6cf79d3e2b1f003b1d8ce4249f8729282ca0a0a839f826d13c9f0a2e605cf650"
+  }
+]

@@ -1,0 +1,12 @@
+cmd: /data/mai/step200-suite-20261118/fm-visual/entry.py --sft-toml /data/mai/training/gui-libra-awhigh-aclow-fm2-20261117/native.toml
+  -- trainer.seed=42 job.wandb_mode=disabled dataloader_train.max_samples_per_batch=1
+  model.config.lora_target_modules="q_proj,k_proj,v_proj,o_proj,q_proj_moe_gen,k_proj_moe_gen,v_proj_moe_gen,o_proj_moe_gen,mlp.gate_proj,mlp.up_proj,mlp.down_proj,mlp_moe_gen.gate_proj,mlp_moe_gen.up_proj,mlp_moe_gen.down_proj"
+  scheduler.lr_scheduler_type=lambdalinear
+args_cfg_path: /data/mai/training/gui-libra-awhigh-aclow-fm2-20261117/native.toml
+args_override:
+- --
+- trainer.seed=42
+- job.wandb_mode=disabled
+- dataloader_train.max_samples_per_batch=1
+- model.config.lora_target_modules="q_proj,k_proj,v_proj,o_proj,q_proj_moe_gen,k_proj_moe_gen,v_proj_moe_gen,o_proj_moe_gen,mlp.gate_proj,mlp.up_proj,mlp.down_proj,mlp_moe_gen.gate_proj,mlp_moe_gen.up_proj,mlp_moe_gen.down_proj"
+- scheduler.lr_scheduler_type=lambdalinear

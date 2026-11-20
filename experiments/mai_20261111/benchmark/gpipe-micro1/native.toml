@@ -1,0 +1,51 @@
+[job]
+task = "vfm"
+experiment = "gui_native_fm_ar_h1"
+project = "cosmos-gui"
+group = "androidcontrol"
+name = "${oc.env:GUI_RUN_NAME,gui_native_fm_ar_h1_v1}"
+wandb_mode = "disabled"
+
+[model]
+joint_attn_implementation = "two_way"
+precision = "bfloat16"
+max_num_tokens_after_packing = -1
+
+[model.parallelism]
+data_parallel_shard_degree = 1
+data_parallel_replicate_degree = 1
+context_parallel_shard_degree = 1
+
+[model.compile]
+enabled = false
+
+[model.ema]
+enabled = false
+
+[model.tokenizer]
+vae_path = "${oc.env:WAN_VAE_PATH}"
+
+[optimizer]
+lr = 0.00001
+weight_decay = 0.0
+
+[trainer]
+max_iter = 3297
+grad_accum_iter = 64
+logging_iter = 1
+
+[checkpoint]
+load_path = "${oc.env:BASE_CHECKPOINT_PATH}"
+save_iter = 50
+
+[scheduler]
+cycle_lengths = [3297]
+f_start = [0.0]
+f_max = [1.0]
+f_min = [0.0]
+warm_up_steps = [33]
+
+[model.activation_checkpointing]
+mode = "none"
+
+save_ops_regex = []
